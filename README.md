@@ -16,6 +16,9 @@
 <a href="https://github.com/izhangzhihao/intellij-rainbow-fart/"><img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat-square"></a>
 </p>
 
+
+[![https://www.gitads.io?utm_source=intellij_rainbow_brackets&utm_medium=display&utm_campaign=izhangzhihao](https://user-images.githubusercontent.com/12044174/84508819-75b54380-acf5-11ea-9949-f56deb38b5a1.png)](https://www.gitads.io?utm_source=intellij_rainbow_brackets&utm_medium=display&utm_campaign=izhangzhihao)
+
 ## 下载
 
 https://plugins.jetbrains.com/plugin/14543-rainbow-fart
