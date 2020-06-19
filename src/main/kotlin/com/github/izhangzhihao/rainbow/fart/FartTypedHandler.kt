@@ -1,5 +1,6 @@
 package com.github.izhangzhihao.rainbow.fart
 
+import com.github.izhangzhihao.rainbow.fart.FartTypedHandler.FartTypedHandler.releaseFart
 import com.intellij.codeInsight.template.impl.editorActions.TypedActionHandlerBase
 import com.intellij.openapi.actionSystem.DataContext
 import com.intellij.openapi.editor.Editor
@@ -18,23 +19,28 @@ class FartTypedHandler(originalHandler: TypedActionHandler) : TypedActionHandler
 
         val str = candidate.joinToString("")
 
-        //TODO: refactoring
-        BuildInContributes.buildInContributes
-                .forEach { (keyword, voices) ->
-                    if (str.contains(keyword, true)) {
-                        GlobalScope.launch(Dispatchers.Default) {
-                            val mp3Stream = FartTypedHandler::class.java.getResourceAsStream("/build-in-voice-chinese/" + voices.random())
-                            val player = Player(mp3Stream)
-                            player.play()
-                            player.close()
-                        }
-                        candidate.clear()
-                    }
+        BuildInContributes.buildInContributesSeq
+                .firstOrNull { (keyword, voices) ->
+                    str.contains(keyword, true)
+                }?.let { (keyword, voices) ->
+                    releaseFart(voices)
+                    candidate.clear()
                 }
 
         if (candidate.size > 100) {
             candidate = candidate.subList(90, candidate.size - 1)
         }
         this.myOriginalHandler?.execute(editor, charTyped, dataContext)
+    }
+
+    object FartTypedHandler {
+        fun releaseFart(voices: List<String>) {
+            GlobalScope.launch(Dispatchers.Default) {
+                val mp3Stream = FartTypedHandler::class.java.getResourceAsStream("/build-in-voice-chinese/" + voices.random())
+                val player = Player(mp3Stream)
+                player.play()
+                player.close()
+            }
+        }
     }
 }
