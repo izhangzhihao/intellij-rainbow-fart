@@ -4,21 +4,16 @@
     <vendor email="izhangzhihao@hotmail.com" url="https://github.com/izhangzhihao">izhangzhihao</vendor>
 
     <description><![CDATA[
-        <strong>Rainbow Brackets / Rainbow Parentheses for IntelliJ based IDEs</strong>
+        <strong>Rainbow Fart for IntelliJ based IDEs</strong>
         <br/>
+        一个在你编程时持续夸你写的牛逼的扩展，可以根据代码关键字播放贴近代码意义的真人语音。
         ]]></description>
 
     <change-notes><![CDATA[
-
-        <p>1.1</p>
-        <ul>
-            <li>Support IntelliJ IDEA based IDEs version 14 and above</li>
-        </ul>
-        <br/>
-
         <p>1.0</p>
         <ul>
-            <li>Initial release</li>
+            <li>一个在你编程时持续夸你写的牛逼的扩展，可以根据代码关键字播放贴近代码意义的真人语音。</li>
+            <li>第一个版本，默认支持当前内置语音和行为</li>
         </ul>
         ]]>
     </change-notes>

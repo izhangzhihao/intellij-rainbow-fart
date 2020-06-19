@@ -1,12 +1,24 @@
 <h1 align="center">
   <br>
-    <img src="https://github.com/SaekiRaku/vscode-rainbow-fart/blob/master/assets/logo.png?raw=true" alt="logo" width="100">
+    <img src="https://github.com/SaekiRaku/vscode-rainbow-fart/blob/master/assets/logo.png?raw=true" alt="logo" width="320" height="320">
   <br>
   <br>
   🌈 INTELLIJ RAINBOW FART
   <br>
   <br>
 </h1>
+
+<p align="center"> 
+<a href="https://circleci.com/gh/izhangzhihao/intellij-rainbow-fart"><img src="https://img.shields.io/circleci/project/github/izhangzhihao/intellij-rainbow-fart/master.svg?style=flat-square"></a>
+<a href="https://github.com/izhangzhihao/intellij-rainbow-fart/releases"><img src="https://img.shields.io/github/release/izhangzhihao/intellij-rainbow-fart.svg?style=flat-square"></a>
+<a href="https://plugins.jetbrains.com/plugin/14543-rainbow-fart"><img src="https://img.shields.io/jetbrains/plugin/d/14543-rainbow-fart.svg?style=flat-square"></a>
+<a href="https://plugins.jetbrains.com/plugin/14543-rainbow-fart"><img src="https://img.shields.io/jetbrains/plugin/v/14543-rainbow-fart.svg?style=flat-square"></a>
+<a href="https://github.com/izhangzhihao/intellij-rainbow-fart/"><img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat-square"></a>
+</p>
+
+## 下载
+
+https://plugins.jetbrains.com/plugin/14543-rainbow-fart
 
 ## 概述
 
@@ -20,6 +32,20 @@ This is a VSCode extension that keeps giving you compliment while you are coding
 
 Rainbow Fart is a literal translation word from Chinese, it's mean give somebody exaggerated compliment that even seems a little fake. It's not involved any connection to specific group or people.
 
+## 支持我
+
+
+<table>
+  <tr>
+    <th width="50%">AliPay</th>
+    <th width="50%">WeChatPay</th>
+  </tr>
+  <tr></tr>
+  <tr align="center">
+    <td><img width="70%" src="https://raw.githubusercontent.com/izhangzhihao/intellij-rainbow-brackets/2020.1/screenshots/alipay.jpg"></td>
+    <td><img width="70%" src="https://raw.githubusercontent.com/izhangzhihao/intellij-rainbow-brackets/2020.1/screenshots/wechat.jpg"></td>
+  </tr>
+</table>
 
 ## 许可
 
