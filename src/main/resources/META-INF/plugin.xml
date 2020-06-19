@@ -1,0 +1,43 @@
+<idea-plugin>
+    <id>izhangzhihao.rainbow.fart</id>
+    <name>Rainbow Fart</name>
+    <vendor email="izhangzhihao@hotmail.com" url="https://github.com/izhangzhihao">izhangzhihao</vendor>
+
+    <description><![CDATA[
+        <strong>Rainbow Brackets / Rainbow Parentheses for IntelliJ based IDEs</strong>
+        <br/>
+        ]]></description>
+
+    <change-notes><![CDATA[
+
+        <p>1.1</p>
+        <ul>
+            <li>Support IntelliJ IDEA based IDEs version 14 and above</li>
+        </ul>
+        <br/>
+
+        <p>1.0</p>
+        <ul>
+            <li>Initial release</li>
+        </ul>
+        ]]>
+    </change-notes>
+
+    <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
+    <idea-version since-build="201.6668"/>
+
+    <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
+         on how to target different products -->
+    <depends>com.intellij.modules.lang</depends>
+
+
+    <extensions defaultExtensionNs="com.intellij">
+        <editorTypedHandler implementationClass="com.github.izhangzhihao.rainbow.fart.FartTypedHandler" id="fart"/>
+    </extensions>
+
+
+    <extensions defaultExtensionNs="com.intellij">
+
+    </extensions>
+
+</idea-plugin>
