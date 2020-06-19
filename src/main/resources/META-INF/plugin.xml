@@ -33,6 +33,7 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <editorTypedHandler implementationClass="com.github.izhangzhihao.rainbow.fart.FartTypedHandler" id="fart"/>
+        <postStartupActivity implementation="com.github.izhangzhihao.rainbow.fart.ResourcesLoader"/>
     </extensions>
 
 

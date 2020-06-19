@@ -1,0 +1,45 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/openjdk:8-jdk
+
+    working_directory: ~/intellij-rainbow-fart
+
+    environment:
+      JVM_OPTS: -Xmx3200m
+      TERM: dumb
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+          - 201-dependencies-{{ checksum "build.gradle" }}
+
+      - run: ./gradlew -v
+
+      - run: ./gradlew buildPlugin
+
+      - run: ./gradlew check
+
+      - type: shell
+        name: Release
+        command: |
+          if git log -1 --pretty=%B | grep "^[0-9]\+\.[0-9]\+\.[0-9]\+$";
+          then
+            ./gradlew publishPlugin
+          elif git log -1 --pretty=%B | grep "^[0-9]\+\.[0-9]\+$";
+          then
+            ./gradlew publishPlugin
+          else
+            echo "Not a release, skipping"
+          fi
+
+      - save_cache:
+          paths:
+            - ~/.gradle
+          key: 201-dependencies-{{ checksum "build.gradle" }}
+
+      - store_artifacts:
+          path: ~/intellij-rainbow-fart/build/distributions/
