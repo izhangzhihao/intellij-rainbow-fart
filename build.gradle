@@ -18,11 +18,8 @@ plugins {
     id "de.undercouch.download" version "4.0.2"
     id "org.jetbrains.kotlin.jvm" version "1.3.71"
     id "org.jetbrains.kotlin.kapt" version "1.3.71"
-    id "jacoco"
     id "idea"
 }
-
-apply from: "$rootDir/verifier.gradle"
 
 testlogger {
     theme 'mocha'
@@ -89,35 +86,3 @@ targetCompatibility = javaVersion
     jvmTarget = javaVersion
     freeCompilerArgs = ["-Xskip-runtime-version-check"]
 }
-
-jacocoTestReport {
-    reports {
-        xml.enabled true
-        csv.enabled false
-        html.enabled true
-    }
-}
-
-check.dependsOn jacocoTestReport
-
-jacocoTestReport {
-    afterEvaluate {
-        classDirectories.setFrom(
-                files(classDirectories.files.collect {
-                    fileTree(dir: it, exclude: [
-                            '**/settings/**',
-                            '**/util/**',
-                    ])
-                })
-        )
-    }
-}
-
-
-pluginVerifier {
-    pluginFileName = "$rootProject.name-$version"
-    ides = ["IC-201.6668.121"]
-    verifierVersion = "1.232"
-}
-
-check.dependsOn pluginVerifier

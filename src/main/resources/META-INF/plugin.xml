@@ -10,6 +10,14 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>1.1</p>
+        <ul>
+            <li>用户可以通过设置临时禁用rainbow fart</li>
+            <li>增加错误报告</li>
+            <li>增加更新提示</li>
+        </ul>
+        <br>
+
         <p>1.0</p>
         <ul>
             <li>一个在你编程时持续夸你写的牛逼的扩展，可以根据代码关键字播放贴近代码意义的真人语音。</li>

@@ -21,8 +21,6 @@ jobs:
 
       - run: ./gradlew buildPlugin
 
-      - run: ./gradlew check
-
       - type: shell
         name: Release
         command: |
