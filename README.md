@@ -23,6 +23,10 @@
 
 https://plugins.jetbrains.com/plugin/14543-rainbow-fart
 
+Or
+
+https://github.com/izhangzhihao/intellij-rainbow-fart/releases
+
 ### 下载SNAPSHOT版本
 
 从[circleci](https://app.circleci.com/pipelines/github/izhangzhihao/intellij-rainbow-fart)找到最近运行成功的pipeline对应的artifacts下载（需要使用GitHub登陆）。
