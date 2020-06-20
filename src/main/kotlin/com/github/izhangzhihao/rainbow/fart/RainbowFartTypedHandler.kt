@@ -13,23 +13,22 @@ import kotlinx.coroutines.launch
 
 class RainbowFartTypedHandler(originalHandler: TypedActionHandler) : TypedActionHandlerBase(originalHandler) {
 
-    private val candidate: MutableList<Char> = mutableListOf()
+    private var candidates: MutableList<Char> = mutableListOf()
 
     override fun execute(editor: Editor, charTyped: Char, dataContext: DataContext) {
-        candidate.add(charTyped)
+        candidates.add(charTyped)
 
-        val str = candidate.joinToString("")
+        val str = candidates.joinToString("")
 
         BuildInContributes.buildInContributesSeq
                 .firstOrNull { (keyword, _) ->
                     str.contains(keyword, true)
                 }?.let { (_, voices) ->
                     releaseFart(voices)
-                    candidate.clear()
+                    candidates.clear()
                 }
-
-        if (candidate.size > 20) {
-            candidate.clear()
+        if (candidates.size > 20) {
+            candidates = candidates.subList(10, candidates.size - 1)
         }
         this.myOriginalHandler?.execute(editor, charTyped, dataContext)
     }
