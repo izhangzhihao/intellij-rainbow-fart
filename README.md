@@ -23,6 +23,10 @@
 
 https://plugins.jetbrains.com/plugin/14543-rainbow-fart
 
+### 下载SNAPSHOT版本
+
+从[circleci](https://app.circleci.com/pipelines/github/izhangzhihao/intellij-rainbow-fart)找到最近运行成功的pipeline对应的artifacts下载（需要使用GitHub登陆）。
+
 ## 概述
 
 一个在你编程时持续夸你写的牛逼的扩展，可以根据代码关键字播放贴近代码意义的真人语音。Inspired by [vscode-rainbow-fart](https://saekiraku.github.io/vscode-rainbow-fart/)。
