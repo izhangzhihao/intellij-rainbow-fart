@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-    <img src="https://github.com/SaekiRaku/vscode-rainbow-fart/blob/master/assets/logo.png?raw=true" alt="logo" width="320" height="320">
+    <img src="https://user-images.githubusercontent.com/12044174/85197300-c25ed700-b312-11ea-9a0b-172e7812a75a.png" alt="logo" width="256" height="256">
   <br>
   <br>
   🌈 INTELLIJ RAINBOW FART
