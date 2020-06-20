@@ -10,6 +10,12 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>1.1.1</p>
+        <ul>
+            <li>Fix scheduled rainbow fart</li>
+        </ul>
+        <br>
+
         <p>1.1</p>
         <ul>
             <li>用户可以通过设置临时禁用rainbow fart</li>
