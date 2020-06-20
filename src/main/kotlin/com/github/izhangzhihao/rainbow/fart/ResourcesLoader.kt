@@ -87,8 +87,6 @@ class ResourcesLoader : StartupActivity {
                 }
             }
         }
-
-        println("done!!!")
     }
 }
 
