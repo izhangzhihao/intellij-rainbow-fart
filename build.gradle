@@ -69,9 +69,6 @@ dependencies {
         exclude module: "gson"
     }
     implementation('javazoom:jlayer:1.0.1')
-    implementation('com.squareup.moshi:moshi-kotlin:1.9.3') {
-        exclude group: "org.jetbrains.kotlin"
-    }
 }
 
 sourceCompatibility = javaVersion

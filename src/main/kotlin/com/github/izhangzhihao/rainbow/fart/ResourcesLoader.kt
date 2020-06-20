@@ -1,11 +1,10 @@
 package com.github.izhangzhihao.rainbow.fart
 
+import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
+import com.fasterxml.jackson.module.kotlin.readValue
 import com.github.izhangzhihao.rainbow.fart.BuildInContributes.buildInContributes
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.startup.StartupActivity
-import com.squareup.moshi.JsonAdapter
-import com.squareup.moshi.Moshi
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.time.delay
@@ -18,13 +17,11 @@ class ResourcesLoader : StartupActivity {
     override fun runActivity(project: Project) {
         val buildInJson = ResourcesLoader::class.java.getResource("/build-in-voice-chinese/contributes.json").readText()
 
-        val moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
+        val mapper = jacksonObjectMapper()
 
-        val jsonAdapter: JsonAdapter<Contributes> = moshi.adapter(Contributes::class.java)
+        val contributes: Contributes = mapper.readValue(buildInJson)
 
-        val contributes: Contributes? = jsonAdapter.fromJson(buildInJson)
-
-        contributes?.contributes?.forEach {
+        contributes.contributes.forEach {
             it.keywords.forEach { keyword ->
                 when (keyword) {
                     "\$time_each_hour" -> GlobalScope.launch {
