@@ -21,7 +21,7 @@
 package com.github.izhangzhihao.rainbow.fart
 
 import com.github.izhangzhihao.rainbow.fart.ErrorContext.Companion.fromThrowable
-import com.github.izhangzhihao.rainbow.fart.settings.FartSettings
+import com.github.izhangzhihao.rainbow.fart.settings.RainbowFartSettings
 import com.intellij.AbstractBundle
 import com.intellij.diagnostic.LogMessage
 import com.intellij.diagnostic.ReportMessages
@@ -245,7 +245,7 @@ private fun getKeyValuePairs(
     val params = mutableMapOf(
             "error.description" to errorContext.description,
             "Plugin Name" to errorContext.pluginName,
-            "Plugin Version" to FartSettings.instance.version,
+            "Plugin Version" to RainbowFartSettings.instance.version,
             "OS Name" to SystemInfo.OS_NAME,
             "OS Version" to SystemInfo.OS_VERSION,
             "Java Version" to SystemInfo.JAVA_VERSION,

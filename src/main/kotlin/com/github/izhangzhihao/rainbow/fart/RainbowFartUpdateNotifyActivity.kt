@@ -1,6 +1,6 @@
 package com.github.izhangzhihao.rainbow.fart
 
-import com.github.izhangzhihao.rainbow.fart.settings.FartSettings
+import com.github.izhangzhihao.rainbow.fart.settings.RainbowFartSettings
 import com.intellij.ide.plugins.IdeaPluginDescriptor
 import com.intellij.ide.plugins.PluginManagerCore
 import com.intellij.notification.NotificationListener
@@ -12,7 +12,7 @@ import com.intellij.openapi.startup.StartupActivity
 class RainbowFartUpdateNotifyActivity : StartupActivity {
 
     override fun runActivity(project: Project) {
-        val settings = FartSettings.instance
+        val settings = RainbowFartSettings.instance
         if (getPlugin()?.version != settings.version) {
             settings.version = getPlugin()!!.version
             showUpdate(project)

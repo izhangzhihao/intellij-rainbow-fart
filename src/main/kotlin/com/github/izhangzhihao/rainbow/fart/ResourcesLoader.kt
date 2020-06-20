@@ -30,7 +30,7 @@ class ResourcesLoader : StartupActivity {
                     "\$time_each_hour" -> GlobalScope.launch {
                         while (true) {
                             if (LocalDateTime.now().hour in 9..18 && LocalDateTime.now().hour !in 11..13) {
-                                FartTypedHandler.FartTypedHandler.releaseFart(it.voices)
+                                RainbowFartTypedHandler.FartTypedHandler.releaseFart(it.voices)
                                 delay(Duration.ofHours(1))
                             }
                         }
@@ -39,7 +39,7 @@ class ResourcesLoader : StartupActivity {
                     "\$time_midnight" -> GlobalScope.launch {
                         while (true) {
                             if (LocalDateTime.now().hour > 20) {
-                                FartTypedHandler.FartTypedHandler.releaseFart(it.voices)
+                                RainbowFartTypedHandler.FartTypedHandler.releaseFart(it.voices)
                             }
                             delay(Duration.ofHours(1))
                         }
@@ -48,7 +48,7 @@ class ResourcesLoader : StartupActivity {
                     "\$time_evening" -> GlobalScope.launch {
                         while (true) {
                             if (LocalDateTime.now().hour in 18..20) {
-                                FartTypedHandler.FartTypedHandler.releaseFart(it.voices)
+                                RainbowFartTypedHandler.FartTypedHandler.releaseFart(it.voices)
                             }
                             delay(Duration.ofHours(1))
                         }
@@ -57,7 +57,7 @@ class ResourcesLoader : StartupActivity {
                     "\$time_noon" -> GlobalScope.launch {
                         while (true) {
                             if (LocalDateTime.now().hour in 12..13) {
-                                FartTypedHandler.FartTypedHandler.releaseFart(it.voices)
+                                RainbowFartTypedHandler.FartTypedHandler.releaseFart(it.voices)
                             }
                             delay(Duration.ofHours(1))
                         }
@@ -66,7 +66,7 @@ class ResourcesLoader : StartupActivity {
                     "\$time_before_noon" -> GlobalScope.launch {
                         while (true) {
                             if (LocalDateTime.now().hour in 11..12) {
-                                FartTypedHandler.FartTypedHandler.releaseFart(it.voices)
+                                RainbowFartTypedHandler.FartTypedHandler.releaseFart(it.voices)
                             }
                             delay(Duration.ofHours(1))
                         }
@@ -75,7 +75,7 @@ class ResourcesLoader : StartupActivity {
                     "\$time_morning" -> GlobalScope.launch {
                         while (true) {
                             if (LocalDateTime.now().hour in 8..9) {
-                                FartTypedHandler.FartTypedHandler.releaseFart(it.voices)
+                                RainbowFartTypedHandler.FartTypedHandler.releaseFart(it.voices)
                             }
                             delay(Duration.ofHours(1))
                         }

@@ -1,30 +1,30 @@
 package com.github.izhangzhihao.rainbow.fart.settings.form
 
-import com.github.izhangzhihao.rainbow.fart.settings.FartSettings
+import com.github.izhangzhihao.rainbow.fart.settings.RainbowFartSettings
 import javax.swing.JCheckBox
 import javax.swing.JComponent
 import javax.swing.JPanel
 
-class FartSettingsForm {
+class RainbowFartSettingsForm {
     private var panel: JPanel? = null
     private var appearancePanel: JPanel? = null
     private var enableRainbowFart: JCheckBox? = null
 
 
-    private val settings: FartSettings = FartSettings.instance
+    private val settingsRainbow: RainbowFartSettings = RainbowFartSettings.instance
 
     fun component(): JComponent? = panel
 
     fun isRainbowEnabled() = enableRainbowFart?.isSelected
 
     val isModified: Boolean
-        get() = (isRainbowEnabled() != settings.isRainbowFartEnabled)
+        get() = (isRainbowEnabled() != settingsRainbow.isRainbowFartEnabled)
 
     init {
         loadSettings()
     }
 
     fun loadSettings() {
-        enableRainbowFart?.isSelected = settings.isRainbowFartEnabled
+        enableRainbowFart?.isSelected = settingsRainbow.isRainbowFartEnabled
     }
 }

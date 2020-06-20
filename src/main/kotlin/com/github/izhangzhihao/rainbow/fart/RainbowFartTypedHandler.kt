@@ -1,7 +1,7 @@
 package com.github.izhangzhihao.rainbow.fart
 
-import com.github.izhangzhihao.rainbow.fart.FartTypedHandler.FartTypedHandler.releaseFart
-import com.github.izhangzhihao.rainbow.fart.settings.FartSettings
+import com.github.izhangzhihao.rainbow.fart.RainbowFartTypedHandler.FartTypedHandler.releaseFart
+import com.github.izhangzhihao.rainbow.fart.settings.RainbowFartSettings
 import com.intellij.codeInsight.template.impl.editorActions.TypedActionHandlerBase
 import com.intellij.openapi.actionSystem.DataContext
 import com.intellij.openapi.editor.Editor
@@ -11,7 +11,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-class FartTypedHandler(originalHandler: TypedActionHandler) : TypedActionHandlerBase(originalHandler) {
+class RainbowFartTypedHandler(originalHandler: TypedActionHandler) : TypedActionHandlerBase(originalHandler) {
 
     private val candidate: MutableList<Char> = mutableListOf()
 
@@ -36,7 +36,7 @@ class FartTypedHandler(originalHandler: TypedActionHandler) : TypedActionHandler
 
     object FartTypedHandler {
         fun releaseFart(voices: List<String>) {
-            if (FartSettings.instance.isRainbowFartEnabled) {
+            if (RainbowFartSettings.instance.isRainbowFartEnabled) {
                 GlobalScope.launch(Dispatchers.Default) {
                     val mp3Stream = FartTypedHandler::class.java.getResourceAsStream("/build-in-voice-chinese/" + voices.random())
                     val player = Player(mp3Stream)

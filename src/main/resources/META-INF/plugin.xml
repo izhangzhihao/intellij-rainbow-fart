@@ -27,12 +27,12 @@
 
 
     <extensions defaultExtensionNs="com.intellij">
-        <editorTypedHandler implementationClass="com.github.izhangzhihao.rainbow.fart.FartTypedHandler" id="fart"/>
+        <editorTypedHandler implementationClass="com.github.izhangzhihao.rainbow.fart.RainbowFartTypedHandler" id="fart"/>
         <postStartupActivity implementation="com.github.izhangzhihao.rainbow.fart.ResourcesLoader"/>
         <postStartupActivity implementation="com.github.izhangzhihao.rainbow.fart.RainbowFartUpdateNotifyActivity"/>
         <errorHandler implementation="com.github.izhangzhihao.rainbow.fart.GitHubErrorReporter"/>
-        <applicationService serviceImplementation="com.github.izhangzhihao.rainbow.fart.settings.FartSettings"/>
-        <applicationConfigurable instance="com.github.izhangzhihao.rainbow.fart.settings.FartConfigurable"/>
+        <applicationService serviceImplementation="com.github.izhangzhihao.rainbow.fart.settings.RainbowFartSettings"/>
+        <applicationConfigurable instance="com.github.izhangzhihao.rainbow.fart.settings.RainbowFartConfigurable"/>
     </extensions>
 
 

@@ -8,7 +8,7 @@ import com.intellij.util.xmlb.XmlSerializerUtil.copyBean
 import org.jetbrains.annotations.Nullable
 
 @State(name = "FartSettings", storages = [(Storage("rainbow_fart.xml"))])
-class FartSettings : PersistentStateComponent<FartSettings> {
+class RainbowFartSettings : PersistentStateComponent<RainbowFartSettings> {
 
     var isRainbowFartEnabled = true
     var version = "Unknown"
@@ -16,12 +16,12 @@ class FartSettings : PersistentStateComponent<FartSettings> {
     @Nullable
     override fun getState() = this
 
-    override fun loadState(state: FartSettings) {
+    override fun loadState(state: RainbowFartSettings) {
         copyBean(state, this)
     }
 
     companion object {
-        val instance: FartSettings
-            get() = getService(FartSettings::class.java)
+        val instance: RainbowFartSettings
+            get() = getService(RainbowFartSettings::class.java)
     }
 }
