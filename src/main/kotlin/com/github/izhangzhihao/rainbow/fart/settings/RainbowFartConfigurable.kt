@@ -22,6 +22,7 @@ class RainbowFartConfigurable : Configurable {
     override fun apply() {
         val settings = RainbowFartSettings.instance
         settings.isRainbowFartEnabled = settingsFormRainbow?.isRainbowEnabled() ?: true
+        settings.customVoicePackage = settingsFormRainbow?.customVoicePackage() ?: ""
     }
 
     override fun reset() {

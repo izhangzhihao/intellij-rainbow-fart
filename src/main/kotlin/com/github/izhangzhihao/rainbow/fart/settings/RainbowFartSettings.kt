@@ -12,6 +12,7 @@ class RainbowFartSettings : PersistentStateComponent<RainbowFartSettings> {
 
     var isRainbowFartEnabled = true
     var version = "Unknown"
+    var customVoicePackage: String = ""
 
     @Nullable
     override fun getState() = this

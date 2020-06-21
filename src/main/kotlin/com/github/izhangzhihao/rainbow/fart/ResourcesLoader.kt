@@ -1,13 +1,16 @@
 package com.github.izhangzhihao.rainbow.fart
 
+import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import com.github.izhangzhihao.rainbow.fart.BuildInContributes.buildInContributes
+import com.github.izhangzhihao.rainbow.fart.settings.RainbowFartSettings
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.startup.StartupActivity
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.time.delay
+import java.io.File
 import java.time.Duration
 import java.time.LocalDateTime
 
@@ -15,11 +18,16 @@ import java.time.LocalDateTime
 class ResourcesLoader : StartupActivity {
 
     override fun runActivity(project: Project) {
-        val buildInJson = ResourcesLoader::class.java.getResource("/build-in-voice-chinese/contributes.json").readText()
+        val current =
+                if (RainbowFartSettings.instance.customVoicePackage != null) {
+                    File(RainbowFartSettings.instance.customVoicePackage + File.separator + "contributes.json").readText()
+                } else {
+                    ResourcesLoader::class.java.getResource("/build-in-voice-chinese/contributes.json").readText()
+                }
 
         val mapper = jacksonObjectMapper()
 
-        val contributes: Contributes = mapper.readValue(buildInJson)
+        val contributes: Contributes = mapper.readValue(current)
 
         contributes.contributes.forEach {
             it.keywords.forEach { keyword ->
@@ -87,6 +95,10 @@ class ResourcesLoader : StartupActivity {
     }
 }
 
+data class Manifest(val name: String, @JsonProperty("display-name") val displayName: String,
+                    val avatar: String, @JsonProperty("avatar-dark") val avatarDark: String,
+                    val version: String, val description: String, val languages: List<String>,
+                    val author: String, val gender: String, val locale: String)
 
 data class Contribute(val keywords: List<String>, val voices: List<String>)
 

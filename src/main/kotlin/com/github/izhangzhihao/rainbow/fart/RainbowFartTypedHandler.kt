@@ -10,6 +10,7 @@ import javazoom.jl.player.Player
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import java.io.File
 
 class RainbowFartTypedHandler(originalHandler: TypedActionHandler) : TypedActionHandlerBase(originalHandler) {
 
@@ -37,7 +38,12 @@ class RainbowFartTypedHandler(originalHandler: TypedActionHandler) : TypedAction
         fun releaseFart(voices: List<String>) {
             if (RainbowFartSettings.instance.isRainbowFartEnabled) {
                 GlobalScope.launch(Dispatchers.Default) {
-                    val mp3Stream = FartTypedHandler::class.java.getResourceAsStream("/build-in-voice-chinese/" + voices.random())
+                    val mp3Stream =
+                            if (RainbowFartSettings.instance.customVoicePackage != null) {
+                                File(RainbowFartSettings.instance.customVoicePackage + File.separator + voices.random()).inputStream()
+                            } else {
+                                FartTypedHandler::class.java.getResourceAsStream("/build-in-voice-chinese/" + voices.random())
+                            }
                     val player = Player(mp3Stream)
                     player.play()
                     player.close()
