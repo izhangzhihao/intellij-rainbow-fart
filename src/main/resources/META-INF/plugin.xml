@@ -6,7 +6,9 @@
     <description><![CDATA[
         <strong>Rainbow Fart for IntelliJ based IDEs</strong>
         <br/>
-        一个在你编程时持续夸你写的牛逼的扩展，可以根据代码关键字播放贴近代码意义的真人语音。
+        This is a IntelliJ plugin that keeps giving you compliment while you are coding, for example when you type `function` it will play sound says you wrote a such good function. However, the sounds is recorded in Chinese, so it's may not suitable for you. You can still modify the source code, like add English version compliment sound file.
+
+        Rainbow Fart is a literal translation word from Chinese, it's mean give somebody exaggerated compliment that even seems a little fake. It's not involved any connection to specific group or people.
         ]]></description>
 
     <change-notes><![CDATA[
