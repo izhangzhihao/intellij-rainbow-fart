@@ -12,6 +12,12 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>1.2</p>
+        <ul>
+            <li><a href="https://github.com/izhangzhihao/intellij-rainbow-fart#custom-voice-packages">Support custom voice packages</a></li>
+        </ul>
+        <br>
+
         <p>1.1.1</p>
         <ul>
             <li>Fix scheduled rainbow fart</li>
