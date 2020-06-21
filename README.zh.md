@@ -36,14 +36,14 @@ https://plugins.jetbrains.com/plugin/14543-rainbow-fart
 
 <kbd>Settings/Preferences</kbd> > <kbd>Other Settings</kbd> > <kbd>Rainbow Fart</kbd> > <kbd>Custom voice package path</kbd>
 
-如果你想使用这个语音包 [RedAlert-Voice-Pack](https://github.com/trotsky1997/RedAlert-Voice-Pack), 你可以：
+如果你想使用 [钉宫语音包](https://github.com/zthxxx/kugimiya-rainbow-fart), 你可以：
 
 ```bash
 cd /some/dir
-git clone https://github.com/trotsky1997/RedAlert-Voice-Pack.git
+git clone https://github.com/zthxxx/kugimiya-rainbow-fart.git
 ```
 
-然后将 `/some/dir/RedAlert-Voice-Pack` 写入配置中去，点击保存退出，然后重启IDE。
+然后将 `/some/dir/kugimiya-rainbow-fart` 写入配置中去，点击保存退出，然后重启IDE。
 
 ## 支持我
 

@@ -40,14 +40,14 @@ Rainbow Fart is a literal translation word from Chinese, it's mean give somebody
 
 <kbd>Settings/Preferences</kbd> > <kbd>Other Settings</kbd> > <kbd>Rainbow Fart</kbd> > <kbd>Custom voice package path</kbd>
 
-for example if you want to use [RedAlert-Voice-Pack](https://github.com/trotsky1997/RedAlert-Voice-Pack), you can do
+for example if you want to use [kugimiya voice package](https://github.com/zthxxx/kugimiya-rainbow-fart), you can do
 
 ```bash
 cd /some/dir
-git clone https://github.com/trotsky1997/RedAlert-Voice-Pack.git
+git clone https://github.com/zthxxx/kugimiya-rainbow-fart.git
 ```
 
-After that you can just put `/some/dir/RedAlert-Voice-Pack` into that option. don't forget to save and restart your IDE.
+After that you can just put `/some/dir/kugimiya-rainbow-fart` into that option. don't forget to save and restart your IDE.
 
 ## Support Me
 
