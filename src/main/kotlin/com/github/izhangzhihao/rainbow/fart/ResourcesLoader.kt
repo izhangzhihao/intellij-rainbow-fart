@@ -19,17 +19,28 @@ class ResourcesLoader : StartupActivity {
 
     override fun runActivity(project: Project) {
         val current =
-                if (RainbowFartSettings.instance.customVoicePackage != null) {
-                    File(RainbowFartSettings.instance.customVoicePackage + File.separator + "contributes.json").readText()
+                if (RainbowFartSettings.instance.customVoicePackage != "") {
+                    File(RainbowFartSettings.instance.customVoicePackage + File.separator + "manifest.json").readText()
                 } else {
-                    ResourcesLoader::class.java.getResource("/build-in-voice-chinese/contributes.json").readText()
+                    ResourcesLoader::class.java.getResource("/build-in-voice-chinese/manifest.json").readText()
                 }
 
         val mapper = jacksonObjectMapper()
 
-        val contributes: Contributes = mapper.readValue(current)
+        val manifest: Manifest = mapper.readValue(current)
 
-        contributes.contributes.forEach {
+        val contributes: List<Contribute> =
+                if (manifest.contributes != null) {
+                    manifest.contributes
+                } else if (RainbowFartSettings.instance.customVoicePackage != "") {
+                    val contText = File(RainbowFartSettings.instance.customVoicePackage + File.separator + "contributes.json").readText()
+                    mapper.readValue<Contributes>(contText).contributes
+                } else {
+                    val contText = ResourcesLoader::class.java.getResource("/build-in-voice-chinese/contributes.json").readText()
+                    mapper.readValue<Contributes>(contText).contributes
+                }
+
+        contributes.forEach {
             it.keywords.forEach { keyword ->
                 when (keyword) {
                     "\$time_each_hour" -> GlobalScope.launch {
@@ -98,7 +109,7 @@ class ResourcesLoader : StartupActivity {
 data class Manifest(val name: String, @JsonProperty("display-name") val displayName: String,
                     val avatar: String, @JsonProperty("avatar-dark") val avatarDark: String,
                     val version: String, val description: String, val languages: List<String>,
-                    val author: String, val gender: String, val locale: String)
+                    val author: String, val gender: String, val locale: String, val contributes: List<Contribute>?)
 
 data class Contribute(val keywords: List<String>, val voices: List<String>)
 
