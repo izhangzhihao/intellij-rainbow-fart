@@ -36,6 +36,19 @@ This is a IntelliJ plugin that keeps giving you compliment while you are coding,
 
 Rainbow Fart is a literal translation word from Chinese, it's mean give somebody exaggerated compliment that even seems a little fake. It's not involved any connection to specific group or people.
 
+## Custom voice packages
+
+<kbd>Settings/Preferences</kbd> > <kbd>Other Settings</kbd> > <kbd>Rainbow Fart</kbd> > <kbd>Custom voice package path</kbd>
+
+for example if you want to use [RedAlert-Voice-Pack](https://github.com/trotsky1997/RedAlert-Voice-Pack), you can do
+
+```bash
+cd /some/dir
+git clone https://github.com/trotsky1997/RedAlert-Voice-Pack.git
+```
+
+After that you can just put `/some/dir/RedAlert-Voice-Pack` into that option. don't forget to save and restart your IDE.
+
 ## Support Me
 
 

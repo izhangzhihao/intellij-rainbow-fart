@@ -32,6 +32,19 @@ https://plugins.jetbrains.com/plugin/14543-rainbow-fart
 
 一个在你编程时持续夸你写的牛逼的扩展，可以根据代码关键字播放贴近代码意义的真人语音。Inspired by [vscode-rainbow-fart](https://saekiraku.github.io/vscode-rainbow-fart/)。
 
+## 自定义语音包
+
+<kbd>Settings/Preferences</kbd> > <kbd>Other Settings</kbd> > <kbd>Rainbow Fart</kbd> > <kbd>Custom voice package path</kbd>
+
+如果你想使用这个语音包 [RedAlert-Voice-Pack](https://github.com/trotsky1997/RedAlert-Voice-Pack), 你可以：
+
+```bash
+cd /some/dir
+git clone https://github.com/trotsky1997/RedAlert-Voice-Pack.git
+```
+
+然后将 `/some/dir/RedAlert-Voice-Pack` 写入配置中去，点击保存退出，然后重启IDE。
+
 ## 支持我
 
 
