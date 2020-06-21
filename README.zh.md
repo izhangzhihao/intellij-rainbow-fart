@@ -16,11 +16,11 @@
 <a href="https://github.com/izhangzhihao/intellij-rainbow-fart/"><img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat-square"></a>
 </p>
 
-Languages: [简体中文](./README.zh.md) | English
+Languages: 简体中文 | [English](./README.md)
 
 [![https://www.gitads.io?utm_source=intellij_rainbow_brackets&utm_medium=display&utm_campaign=izhangzhihao](https://user-images.githubusercontent.com/12044174/84508819-75b54380-acf5-11ea-9949-f56deb38b5a1.png)](https://www.gitads.io?utm_source=intellij_rainbow_brackets&utm_medium=display&utm_campaign=izhangzhihao)
 
-## Download
+## 下载
 
 https://github.com/izhangzhihao/intellij-rainbow-fart/releases
 
@@ -28,15 +28,11 @@ Or
 
 https://plugins.jetbrains.com/plugin/14543-rainbow-fart
 
-## Description
+## 概述
 
-[What is rainbow fart](https://www.youtube.com/watch?v=czOz1twhTi0)
+一个在你编程时持续夸你写的牛逼的扩展，可以根据代码关键字播放贴近代码意义的真人语音。Inspired by [vscode-rainbow-fart](https://saekiraku.github.io/vscode-rainbow-fart/)。
 
-This is a IntelliJ plugin that keeps giving you compliment while you are coding, for example when you type `function` it will play sound says you wrote a such good function. However, the sounds is recorded in Chinese, so it's may not suitable for you. You can still modify the source code, like add English version compliment sound file.
-
-Rainbow Fart is a literal translation word from Chinese, it's mean give somebody exaggerated compliment that even seems a little fake. It's not involved any connection to specific group or people.
-
-## Support Me
+## 支持我
 
 
 <table>
@@ -51,8 +47,6 @@ Rainbow Fart is a literal translation word from Chinese, it's mean give somebody
   </tr>
 </table>
 
-## License
+## 许可
 
-Open source based on MIT, including all design resources and audio resources.
-
-In addition, since most of the audio resources are recorded by real people, and under the obligations of the MIT licensee. Here it is clarify: the resources of this repo is created by @SaekiRaku, taken from [vscode-rainbow-fart](https://github.com/SaekiRaku/vscode-rainbow-fart)
+基于 MIT 开源，包括所有设计资源及音频资源。仓库中的音频资源大部分由真人录音，并且根据 MIT 被授权人义务在此明确：仓库中多媒体资源，来自于[vscode-rainbow-fart](https://saekiraku.github.io/vscode-rainbow-fart/), 作者是@SaekiRaku, 本仓库同样基于[MIT协议](https://github.com/SaekiRaku/vscode-rainbow-fart/blob/master/LICENSE)。
