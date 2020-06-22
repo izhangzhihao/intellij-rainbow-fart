@@ -25,7 +25,9 @@ class RainbowFartTypedHandler(originalHandler: TypedActionHandler) : TypedAction
                 .firstOrNull { (keyword, _) ->
                     str.contains(keyword, true)
                 }?.let { (_, voices) ->
-                    releaseFart(voices)
+                    GlobalScope.launch(Dispatchers.Default) {
+                        releaseFart(voices)
+                    }
                     candidates.clear()
                 }
         if (candidates.size > 20) {
@@ -37,17 +39,15 @@ class RainbowFartTypedHandler(originalHandler: TypedActionHandler) : TypedAction
     object FartTypedHandler {
         fun releaseFart(voices: List<String>) {
             if (RainbowFartSettings.instance.isRainbowFartEnabled) {
-                GlobalScope.launch(Dispatchers.Default) {
-                    val mp3Stream =
-                            if (RainbowFartSettings.instance.customVoicePackage != "") {
-                                File(RainbowFartSettings.instance.customVoicePackage + File.separator + voices.random()).inputStream()
-                            } else {
-                                FartTypedHandler::class.java.getResourceAsStream("/build-in-voice-chinese/" + voices.random())
-                            }
-                    val player = Player(mp3Stream)
-                    player.play()
-                    player.close()
-                }
+                val mp3Stream =
+                        if (RainbowFartSettings.instance.customVoicePackage != "") {
+                            File(RainbowFartSettings.instance.customVoicePackage + File.separator + voices.random()).inputStream()
+                        } else {
+                            FartTypedHandler::class.java.getResourceAsStream("/build-in-voice-chinese/" + voices.random())
+                        }
+                val player = Player(mp3Stream)
+                player.play()
+                player.close()
             }
         }
     }
