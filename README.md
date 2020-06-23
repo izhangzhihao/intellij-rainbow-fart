@@ -22,10 +22,6 @@ Languages: [简体中文](./README.zh.md) | English
 
 ## Download
 
-https://github.com/izhangzhihao/intellij-rainbow-fart/releases
-
-Or
-
 https://plugins.jetbrains.com/plugin/14543-rainbow-fart
 
 ## Description
