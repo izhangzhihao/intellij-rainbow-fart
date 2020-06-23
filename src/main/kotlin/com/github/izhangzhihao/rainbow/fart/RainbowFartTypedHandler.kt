@@ -17,6 +17,10 @@ class RainbowFartTypedHandler(originalHandler: TypedActionHandler) : TypedAction
     private var candidates: MutableList<Char> = mutableListOf()
 
     override fun execute(editor: Editor, charTyped: Char, dataContext: DataContext) {
+        if (!RainbowFartSettings.instance.isRainbowFartEnabled) {
+            this.myOriginalHandler?.execute(editor, charTyped, dataContext)
+            return
+        }
         candidates.add(charTyped)
 
         val str = candidates.joinToString("")
