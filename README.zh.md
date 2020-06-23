@@ -18,7 +18,7 @@
 
 Languages: 简体中文 | [English](./README.md)
 
-[![https://www.gitads.io?utm_source=intellij_rainbow_brackets&utm_medium=display&utm_campaign=izhangzhihao](https://user-images.githubusercontent.com/12044174/84508819-75b54380-acf5-11ea-9949-f56deb38b5a1.png)](https://www.gitads.io?utm_source=intellij_rainbow_brackets&utm_medium=display&utm_campaign=izhangzhihao)
+[![https://www.gitads.io?utm_source=intellij_rainbow_brackets&utm_medium=display&utm_campaign=izhangzhihao](https://images.gitads.io/intellij-rainbow-brackets)](https://www.gitads.io?utm_source=intellij_rainbow_brackets&utm_medium=display&utm_campaign=izhangzhihao)
 
 ## 下载
 
