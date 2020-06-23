@@ -18,6 +18,11 @@ import java.time.LocalDateTime
 class ResourcesLoader : StartupActivity {
 
     override fun runActivity(project: Project) {
+        if (RainbowFartSettings.isAppliedApplicationLevel) {
+            return
+        } else {
+            RainbowFartSettings.isAppliedApplicationLevel = true
+        }
         val current =
                 if (RainbowFartSettings.instance.customVoicePackage != "") {
                     File(RainbowFartSettings.instance.customVoicePackage + File.separator + "manifest.json").readText()

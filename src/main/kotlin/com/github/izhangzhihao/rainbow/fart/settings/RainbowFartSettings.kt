@@ -24,5 +24,7 @@ class RainbowFartSettings : PersistentStateComponent<RainbowFartSettings> {
     companion object {
         val instance: RainbowFartSettings
             get() = getService(RainbowFartSettings::class.java)
+
+        var isAppliedApplicationLevel = false
     }
 }
