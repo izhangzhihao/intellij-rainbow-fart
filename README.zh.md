@@ -41,6 +41,8 @@ git clone https://github.com/zthxxx/kugimiya-rainbow-fart.git
 
 然后将 `/some/dir/kugimiya-rainbow-fart` 写入配置中去，点击保存退出，然后重启IDE。
 
+请在[这里](https://github.com/topics/rainbow-fart)查找更多语音包。
+
 ## 支持我
 
 

@@ -45,6 +45,8 @@ git clone https://github.com/zthxxx/kugimiya-rainbow-fart.git
 
 After that you can just put `/some/dir/kugimiya-rainbow-fart` into that option. don't forget to save and restart your IDE.
 
+If you want more, please goes to [here](https://github.com/topics/rainbow-fart).
+
 ## Support Me
 
 
