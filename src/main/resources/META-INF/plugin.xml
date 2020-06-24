@@ -12,6 +12,14 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>1.2.2</p>
+        <ul>
+            <li>Feature
+                <a href="https://github.com/izhangzhihao/intellij-rainbow-fart/issues/6">#6</a>: auto-complete support
+            </li>
+        </ul>
+        <br>
+
         <p>1.2.1</p>
         <ul>
             <li>Feature <a href="https://github.com/izhangzhihao/intellij-rainbow-fart/issues/16">#16</a>: support
