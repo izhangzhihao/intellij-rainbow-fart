@@ -14,15 +14,20 @@
     <change-notes><![CDATA[
         <p>1.2.1</p>
         <ul>
-            <li>Feature <a href="https://github.com/izhangzhihao/intellij-rainbow-fart/issues/16">#16</a>: support java's lambda</li>
-            <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-fart/issues/18">#18</a>: play sounds only at application level</li>
+            <li>Feature <a href="https://github.com/izhangzhihao/intellij-rainbow-fart/issues/16">#16</a>: support
+                java's lambda
+            </li>
+            <li>Fix <a href="https://github.com/izhangzhihao/intellij-rainbow-fart/issues/18">#18</a>: play sounds only
+                at application level
+            </li>
             <li>update build-in voice package</li>
         </ul>
         <br>
 
         <p>1.2</p>
         <ul>
-            <li><a href="https://github.com/izhangzhihao/intellij-rainbow-fart#custom-voice-packages">Support custom voice packages</a></li>
+            <li><a href="https://github.com/izhangzhihao/intellij-rainbow-fart#custom-voice-packages">Support custom
+                voice packages</a></li>
         </ul>
         <br>
 
@@ -57,17 +62,17 @@
 
 
     <extensions defaultExtensionNs="com.intellij">
-        <editorTypedHandler implementationClass="com.github.izhangzhihao.rainbow.fart.RainbowFartTypedHandler" id="fart"/>
+        <editorTypedHandler implementationClass="com.github.izhangzhihao.rainbow.fart.RainbowFartTypedHandler"
+                            id="fart"/>
         <postStartupActivity implementation="com.github.izhangzhihao.rainbow.fart.ResourcesLoader"/>
         <postStartupActivity implementation="com.github.izhangzhihao.rainbow.fart.RainbowFartUpdateNotifyActivity"/>
         <errorHandler implementation="com.github.izhangzhihao.rainbow.fart.GitHubErrorReporter"/>
         <applicationService serviceImplementation="com.github.izhangzhihao.rainbow.fart.settings.RainbowFartSettings"/>
         <applicationConfigurable instance="com.github.izhangzhihao.rainbow.fart.settings.RainbowFartConfigurable"/>
     </extensions>
-
-
-    <extensions defaultExtensionNs="com.intellij">
-
-    </extensions>
-
+    <project-components>
+        <component>
+            <implementation-class>com.github.izhangzhihao.rainbow.fart.RainbowFartLookupComponent</implementation-class>
+        </component>
+    </project-components>
 </idea-plugin>
