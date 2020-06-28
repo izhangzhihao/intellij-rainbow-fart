@@ -62,7 +62,7 @@
     </change-notes>
 
     <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
-    <idea-version since-build="201.6668"/>
+    <idea-version since-build="191" until-build="201"/>
 
     <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
          on how to target different products -->
@@ -74,7 +74,6 @@
                             id="fart"/>
         <postStartupActivity implementation="com.github.izhangzhihao.rainbow.fart.ResourcesLoader"/>
         <postStartupActivity implementation="com.github.izhangzhihao.rainbow.fart.RainbowFartUpdateNotifyActivity"/>
-        <errorHandler implementation="com.github.izhangzhihao.rainbow.fart.GitHubErrorReporter"/>
         <applicationService serviceImplementation="com.github.izhangzhihao.rainbow.fart.settings.RainbowFartSettings"/>
         <applicationConfigurable instance="com.github.izhangzhihao.rainbow.fart.settings.RainbowFartConfigurable"/>
     </extensions>

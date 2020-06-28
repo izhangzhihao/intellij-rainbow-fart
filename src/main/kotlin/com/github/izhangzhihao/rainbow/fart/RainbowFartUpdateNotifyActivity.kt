@@ -2,7 +2,7 @@ package com.github.izhangzhihao.rainbow.fart
 
 import com.github.izhangzhihao.rainbow.fart.settings.RainbowFartSettings
 import com.intellij.ide.plugins.IdeaPluginDescriptor
-import com.intellij.ide.plugins.PluginManagerCore
+import com.intellij.ide.plugins.PluginManager
 import com.intellij.notification.NotificationListener
 import com.intellij.notification.NotificationType
 import com.intellij.openapi.extensions.PluginId
@@ -46,7 +46,8 @@ class RainbowFartUpdateNotifyActivity : StartupActivity {
 
         }
 
-        fun getPlugin(): IdeaPluginDescriptor? = PluginManagerCore.getPlugin(PluginId.getId(pluginId))
+        fun getPlugin(): IdeaPluginDescriptor? = PluginManager.getPlugin(
+                PluginId.getId("izhangzhihao.rainbow.brackets"))
 
         private fun updateMsg(): String {
             val plugin = getPlugin()
