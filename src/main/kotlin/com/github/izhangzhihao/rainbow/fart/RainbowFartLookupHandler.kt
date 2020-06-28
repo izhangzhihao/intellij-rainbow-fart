@@ -29,6 +29,7 @@ class RainbowFartLookupComponent(lookupManager: LookupManager) {
     }
 
     init {
+        //https://sourcegraph.com/github.com/JetBrains/intellij-community/-/commit/6429469c1bb576f4af5d9bd6473e0e3a71b7c7d5?visible=3
         lookupManager.addPropertyChangeListener(lookupListener)
     }
 }

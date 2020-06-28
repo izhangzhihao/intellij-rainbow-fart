@@ -1,7 +1,7 @@
 {
     "contributes": [
         {
-            "keywords": ["function", "=>", "->", "fun", "def "],
+            "keywords": ["function", "=>", "->", "fun ","func ", "def "],
             "voices":[
                 "function_01.mp3",
                 "function_02.mp3",
