@@ -12,6 +12,17 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>1.2.3</p>
+        <ul>
+            <li>Feature
+                <a href="https://github.com/izhangzhihao/intellij-rainbow-fart/issues/23">#23</a>: MissingKotlinParameterException
+            </li>
+            <li>
+                play voice twice when typing "fun"
+            </li>
+        </ul>
+        <br>
+
         <p>1.2.2</p>
         <ul>
             <li>Feature
