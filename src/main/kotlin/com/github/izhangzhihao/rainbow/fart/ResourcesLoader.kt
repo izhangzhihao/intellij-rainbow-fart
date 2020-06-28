@@ -1,6 +1,7 @@
 package com.github.izhangzhihao.rainbow.fart
 
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.module.kotlin.KotlinModule
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import com.github.izhangzhihao.rainbow.fart.BuildInContributes.buildInContributes
@@ -31,6 +32,8 @@ class ResourcesLoader : StartupActivity {
                 }
 
         val mapper = jacksonObjectMapper()
+
+        mapper.registerModule(KotlinModule(nullisSameAsDefault = true))
 
         val manifest: Manifest = mapper.readValue(current)
 
@@ -114,7 +117,7 @@ class ResourcesLoader : StartupActivity {
 data class Manifest(val name: String, @JsonProperty("display-name") val displayName: String,
                     val avatar: String, @JsonProperty("avatar-dark") val avatarDark: String,
                     val version: String, val description: String, val languages: List<String>,
-                    val author: String, val gender: String, val locale: String, val contributes: List<Contribute>?)
+                    val author: String, val gender: String, val locale: String = "zh", val contributes: List<Contribute>?)
 
 data class Contribute(val keywords: List<String>, val voices: List<String>)
 
