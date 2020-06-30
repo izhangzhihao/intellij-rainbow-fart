@@ -32,7 +32,15 @@ https://plugins.jetbrains.com/plugin/14543-rainbow-fart
 
 <kbd>Settings/Preferences</kbd> > <kbd>Other Settings</kbd> > <kbd>Rainbow Fart</kbd> > <kbd>Custom voice package path</kbd>
 
-如果你想使用 [钉宫语音包](https://github.com/zthxxx/kugimiya-rainbow-fart), 你需要下载最新的release并解压
+如果你想使用 [钉宫语音包](https://github.com/zthxxx/kugimiya-rainbow-fart), 你需要下载最新的 [打包压缩文件](https://github.com/zthxxx/kugimiya-rainbow-fart/releases) 并解压到你想要到目录
+
+例如如下命令：
+
+```
+cd /some/dir  # like ~/Downloads
+curl -LO https://github.com/zthxxx/kugimiya-rainbow-fart/releases/download/v1.0.0/kugimiya-voice-1.0.0.zip
+unzip -q kugimiya-voice-1.0.0.zip -d kugimiya-rainbow-fart
+```
 
 然后将 `/some/dir/kugimiya-rainbow-fart` 写入配置中去，点击保存退出，然后重启IDE。
 
