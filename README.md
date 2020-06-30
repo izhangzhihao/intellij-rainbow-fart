@@ -36,12 +36,7 @@ https://plugins.jetbrains.com/plugin/14543-rainbow-fart
 
 <kbd>Settings/Preferences</kbd> > <kbd>Other Settings</kbd> > <kbd>Rainbow Fart</kbd> > <kbd>Custom voice package path</kbd>
 
-for example if you want to use [kugimiya voice package](https://github.com/zthxxx/kugimiya-rainbow-fart), you can do
-
-```bash
-cd /some/dir
-git clone https://github.com/zthxxx/kugimiya-rainbow-fart.git
-```
+for example if you want to use [kugimiya voice package](https://github.com/zthxxx/kugimiya-rainbow-fart), you can download the release and **unzip it**
 
 After that you can just put `/some/dir/kugimiya-rainbow-fart` into that option. don't forget to save and restart your IDE.
 
