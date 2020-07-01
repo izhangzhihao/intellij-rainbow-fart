@@ -8,6 +8,7 @@ import com.github.izhangzhihao.rainbow.fart.BuildInContributes.buildInContribute
 import com.github.izhangzhihao.rainbow.fart.settings.RainbowFartSettings
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.startup.StartupActivity
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.time.delay
@@ -51,7 +52,7 @@ class ResourcesLoader : StartupActivity {
         contributes.forEach {
             it.keywords.forEach { keyword ->
                 when (keyword) {
-                    "\$time_each_hour" -> GlobalScope.launch {
+                    "\$time_each_hour" -> GlobalScope.launch(Dispatchers.Default) {
                         while (true) {
                             if (LocalDateTime.now().hour in 10..17 && LocalDateTime.now().hour !in 11..13) {
                                 RainbowFartTypedHandler.FartTypedHandler.releaseFart(it.voices)
@@ -60,7 +61,7 @@ class ResourcesLoader : StartupActivity {
                         }
                     }
 
-                    "\$time_midnight" -> GlobalScope.launch {
+                    "\$time_midnight" -> GlobalScope.launch(Dispatchers.Default) {
                         while (true) {
                             if (LocalDateTime.now().hour > 20) {
                                 RainbowFartTypedHandler.FartTypedHandler.releaseFart(it.voices)
@@ -69,7 +70,7 @@ class ResourcesLoader : StartupActivity {
                         }
                     }
 
-                    "\$time_evening" -> GlobalScope.launch {
+                    "\$time_evening" -> GlobalScope.launch(Dispatchers.Default) {
                         while (true) {
                             if (LocalDateTime.now().hour in 18..20) {
                                 RainbowFartTypedHandler.FartTypedHandler.releaseFart(it.voices)
@@ -78,7 +79,7 @@ class ResourcesLoader : StartupActivity {
                         }
                     }
 
-                    "\$time_noon" -> GlobalScope.launch {
+                    "\$time_noon" -> GlobalScope.launch(Dispatchers.Default) {
                         while (true) {
                             if (LocalDateTime.now().hour == 12 && LocalDateTime.now().minute in 30..55) {
                                 RainbowFartTypedHandler.FartTypedHandler.releaseFart(it.voices)
@@ -87,7 +88,7 @@ class ResourcesLoader : StartupActivity {
                         }
                     }
 
-                    "\$time_before_noon" -> GlobalScope.launch {
+                    "\$time_before_noon" -> GlobalScope.launch(Dispatchers.Default) {
                         while (true) {
                             if (LocalDateTime.now().hour == 11 && LocalDateTime.now().minute in 30..55) {
                                 RainbowFartTypedHandler.FartTypedHandler.releaseFart(it.voices)
@@ -96,7 +97,7 @@ class ResourcesLoader : StartupActivity {
                         }
                     }
 
-                    "\$time_morning" -> GlobalScope.launch {
+                    "\$time_morning" -> GlobalScope.launch(Dispatchers.Default) {
                         while (true) {
                             if (LocalDateTime.now().hour in 8..9) {
                                 RainbowFartTypedHandler.FartTypedHandler.releaseFart(it.voices)
