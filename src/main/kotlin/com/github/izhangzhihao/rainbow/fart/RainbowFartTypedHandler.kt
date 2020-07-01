@@ -7,6 +7,7 @@ import com.intellij.openapi.actionSystem.DataContext
 import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.editor.actionSystem.TypedActionHandler
 import javazoom.jl.player.Player
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.io.File
@@ -28,7 +29,7 @@ class RainbowFartTypedHandler(originalHandler: TypedActionHandler) : TypedAction
                 .firstOrNull { (keyword, _) ->
                     str.contains(keyword, true)
                 }?.let { (_, voices) ->
-                    GlobalScope.launch {
+                    GlobalScope.launch(Dispatchers.Default) {
                         releaseFart(voices)
                     }
                     candidates.clear()
