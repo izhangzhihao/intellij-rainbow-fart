@@ -5,16 +5,19 @@ import com.fasterxml.jackson.module.kotlin.KotlinModule
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import com.github.izhangzhihao.rainbow.fart.BuildInContributes.buildInContributes
+import com.github.izhangzhihao.rainbow.fart.BuildInContributes.cron
+import com.github.izhangzhihao.rainbow.fart.BuildInContributes.halfHour
+import com.github.izhangzhihao.rainbow.fart.BuildInContributes.oneHour
 import com.github.izhangzhihao.rainbow.fart.settings.RainbowFartSettings
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.startup.StartupActivity
-import kotlinx.coroutines.Dispatchers
+import io.timeandspace.cronscheduler.CronScheduler
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.time.delay
 import java.io.File
 import java.time.Duration
 import java.time.LocalDateTime
+import java.time.ZoneId
 
 
 class ResourcesLoader : StartupActivity {
@@ -52,58 +55,64 @@ class ResourcesLoader : StartupActivity {
         contributes.forEach {
             it.keywords.forEach { keyword ->
                 when (keyword) {
-                    "\$time_each_hour" -> GlobalScope.launch(Dispatchers.Default) {
-                        while (true) {
+                    "\$time_each_hour" -> {
+                        val timeGuard: (scheduledRunTimeMillis: Long) -> Unit = { _ ->
                             if (LocalDateTime.now().hour in 10..17 && LocalDateTime.now().hour !in 11..13) {
                                 RainbowFartTypedHandler.FartTypedHandler.releaseFart(it.voices)
-                                delay(Duration.ofHours(1))
                             }
                         }
+                        GlobalScope.launch { timeGuard(0) }
+                        cron.scheduleAtRoundTimesInDaySkippingToLatest(oneHour, ZoneId.systemDefault(), timeGuard)
                     }
 
-                    "\$time_midnight" -> GlobalScope.launch(Dispatchers.Default) {
-                        while (true) {
+                    "\$time_midnight" -> {
+                        val timeGuard: (scheduledRunTimeMillis: Long) -> Unit = { _ ->
                             if (LocalDateTime.now().hour > 20) {
                                 RainbowFartTypedHandler.FartTypedHandler.releaseFart(it.voices)
                             }
-                            delay(Duration.ofHours(1))
                         }
+                        GlobalScope.launch { timeGuard(0) }
+                        cron.scheduleAtRoundTimesInDaySkippingToLatest(oneHour, ZoneId.systemDefault(), timeGuard)
                     }
 
-                    "\$time_evening" -> GlobalScope.launch(Dispatchers.Default) {
-                        while (true) {
+                    "\$time_evening" -> {
+                        val timeGuard: (scheduledRunTimeMillis: Long) -> Unit = { _ ->
                             if (LocalDateTime.now().hour in 18..20) {
                                 RainbowFartTypedHandler.FartTypedHandler.releaseFart(it.voices)
                             }
-                            delay(Duration.ofHours(1))
                         }
+                        GlobalScope.launch { timeGuard(0) }
+                        cron.scheduleAtRoundTimesInDaySkippingToLatest(oneHour, ZoneId.systemDefault(), timeGuard)
                     }
 
-                    "\$time_noon" -> GlobalScope.launch(Dispatchers.Default) {
-                        while (true) {
+                    "\$time_noon" -> {
+                        val timeGuard: (scheduledRunTimeMillis: Long) -> Unit = { _ ->
                             if (LocalDateTime.now().hour == 12 && LocalDateTime.now().minute in 30..55) {
                                 RainbowFartTypedHandler.FartTypedHandler.releaseFart(it.voices)
                             }
-                            delay(Duration.ofMinutes(30))
                         }
+                        GlobalScope.launch { timeGuard(0) }
+                        cron.scheduleAtRoundTimesInDaySkippingToLatest(halfHour, ZoneId.systemDefault(), timeGuard)
                     }
 
-                    "\$time_before_noon" -> GlobalScope.launch(Dispatchers.Default) {
-                        while (true) {
+                    "\$time_before_noon" -> {
+                        val timeGuard: (scheduledRunTimeMillis: Long) -> Unit = { _ ->
                             if (LocalDateTime.now().hour == 11 && LocalDateTime.now().minute in 30..55) {
                                 RainbowFartTypedHandler.FartTypedHandler.releaseFart(it.voices)
                             }
-                            delay(Duration.ofMinutes(30))
                         }
+                        GlobalScope.launch { timeGuard(0) }
+                        cron.scheduleAtRoundTimesInDaySkippingToLatest(halfHour, ZoneId.systemDefault(), timeGuard)
                     }
 
-                    "\$time_morning" -> GlobalScope.launch(Dispatchers.Default) {
-                        while (true) {
-                            if (LocalDateTime.now().hour in 8..9) {
+                    "\$time_morning" -> {
+                        val timeGuard: (scheduledRunTimeMillis: Long) -> Unit = { _ ->
+                            if (LocalDateTime.now().hour == 9) {
                                 RainbowFartTypedHandler.FartTypedHandler.releaseFart(it.voices)
                             }
-                            delay(Duration.ofHours(1))
                         }
+                        GlobalScope.launch { timeGuard(0) }
+                        cron.scheduleAtRoundTimesInDaySkippingToLatest(oneHour, ZoneId.systemDefault(), timeGuard)
                     }
 
                     else -> {
@@ -128,4 +137,8 @@ object BuildInContributes {
     val buildInContributes = mutableMapOf<String, List<String>>()
 
     val buildInContributesSeq: Sequence<Map.Entry<String, List<String>>> by lazy { buildInContributes.asSequence() }
+
+    val oneHour = Duration.ofMinutes(60)
+    val halfHour = Duration.ofMinutes(30)
+    val cron = CronScheduler.create(oneHour)
 }
