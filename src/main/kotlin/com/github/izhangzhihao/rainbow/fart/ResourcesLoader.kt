@@ -125,7 +125,7 @@ class ResourcesLoader : StartupActivity {
 }
 
 data class Manifest(val name: String, @JsonProperty("display-name") val displayName: String,
-                    val avatar: String, @JsonProperty("avatar-dark") val avatarDark: String,
+                    val avatar: String, @JsonProperty("avatar-dark") val avatarDark: String?,
                     val version: String, val description: String, val languages: List<String>,
                     val author: String, val gender: String, val locale: String = "zh", val contributes: List<Contribute>?)
 
