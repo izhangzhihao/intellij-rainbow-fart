@@ -12,6 +12,17 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>1.2.4</p>
+        <ul>
+            <li>Fix
+                <a href="https://github.com/izhangzhihao/intellij-rainbow-fart/issues/31">#31</a>: CPU usage issue
+            </li>
+            <li>
+                Now this plugin won't play two voices at same time.
+            </li>
+        </ul>
+        <br>
+
         <p>1.2.3</p>
         <ul>
             <li>Feature
