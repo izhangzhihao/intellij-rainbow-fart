@@ -3,6 +3,7 @@ package com.github.izhangzhihao.rainbow.fart
 import com.github.izhangzhihao.rainbow.fart.settings.RainbowFartSettings
 import com.intellij.ide.plugins.IdeaPluginDescriptor
 import com.intellij.ide.plugins.PluginManagerCore
+import com.intellij.ide.startup.StartupActionScriptManager
 import com.intellij.notification.NotificationListener
 import com.intellij.notification.NotificationType
 import com.intellij.openapi.extensions.PluginId
@@ -12,10 +13,22 @@ import com.intellij.openapi.startup.StartupActivity
 class RainbowFartUpdateNotifyActivity : StartupActivity {
 
     override fun runActivity(project: Project) {
+        removeIfInstalled()
         val settings = RainbowFartSettings.instance
         if (getPlugin()?.version != settings.version) {
             settings.version = getPlugin()!!.version
             showUpdate(project)
+        }
+    }
+
+    private fun removeIfInstalled() {
+        val pluginId = PluginId.getId("com.github.jadepeng.rainbowfart")
+        val isInstalled = PluginManagerCore.isPluginInstalled(pluginId)
+        if (isInstalled) {
+            val pluginDescriptor = PluginManagerCore.getPlugin(pluginId)
+            if (pluginDescriptor != null) {
+                StartupActionScriptManager.addActionCommand(StartupActionScriptManager.DeleteCommand(pluginDescriptor.path))
+            }
         }
     }
 
