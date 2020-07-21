@@ -22,7 +22,7 @@ Languages: [简体中文](./README.zh.md) | English
 
 ## Download
 
-https://plugins.jetbrains.com/plugin/14543-rainbow-fart
+[https://plugins.jetbrains.com/plugin/14543-rainbow-fart](https://tracking.gitads.io/?repo=intellij-rainbow-brackets)
 
 ## Description
 
