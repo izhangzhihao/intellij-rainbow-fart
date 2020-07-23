@@ -28,9 +28,10 @@ class ResourcesLoader : StartupActivity {
         } else {
             RainbowFartSettings.isAppliedApplicationLevel = true
         }
+        val customVoicePackage = RainbowFartSettings.instance.customVoicePackage
         val current =
-                if (RainbowFartSettings.instance.customVoicePackage != "") {
-                    File(RainbowFartSettings.instance.customVoicePackage + File.separator + "manifest.json").readText()
+                if (customVoicePackage != "") {
+                    resolvePath(customVoicePackage + File.separator + "manifest.json").readText()
                 } else {
                     ResourcesLoader::class.java.getResource("/build-in-voice-chinese/manifest.json").readText()
                 }
@@ -44,8 +45,8 @@ class ResourcesLoader : StartupActivity {
         val contributes: List<Contribute> =
                 if (manifest.contributes != null) {
                     manifest.contributes
-                } else if (RainbowFartSettings.instance.customVoicePackage != "") {
-                    val contText = File(RainbowFartSettings.instance.customVoicePackage + File.separator + "contributes.json").readText()
+                } else if (customVoicePackage != "") {
+                    val contText = resolvePath(customVoicePackage + File.separator + "contributes.json").readText()
                     mapper.readValue<Contributes>(contText).contributes
                 } else {
                     val contText = ResourcesLoader::class.java.getResource("/build-in-voice-chinese/contributes.json").readText()
@@ -126,8 +127,8 @@ class ResourcesLoader : StartupActivity {
 
 data class Manifest(val name: String, @JsonProperty("display-name") val displayName: String,
                     val avatar: String, @JsonProperty("avatar-dark") val avatarDark: String?,
-                    val version: String?, val description: String, val languages: List<String>,
-                    val author: String, val gender: String, val locale: String = "zh", val contributes: List<Contribute>?)
+                    val version: String = "1.0.0", val description: String, val languages: List<String>,
+                    val author: String = "No one", val gender: String, val locale: String = "zh", val contributes: List<Contribute>?)
 
 data class Contribute(val keywords: List<String>, val voices: List<String>)
 

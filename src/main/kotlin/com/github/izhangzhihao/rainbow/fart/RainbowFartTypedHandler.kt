@@ -55,7 +55,7 @@ class RainbowFartTypedHandler(originalHandler: TypedActionHandler) : TypedAction
         private fun playVoice(voices: List<String>) {
             val mp3Stream =
                     if (RainbowFartSettings.instance.customVoicePackage != "") {
-                        File(RainbowFartSettings.instance.customVoicePackage + File.separator + voices.random()).inputStream()
+                        resolvePath(RainbowFartSettings.instance.customVoicePackage + File.separator + voices.random()).inputStream()
                     } else {
                         FartTypedHandler::class.java.getResourceAsStream("/build-in-voice-chinese/" + voices.random())
                     }
