@@ -12,6 +12,22 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>1.2.6</p>
+        <ul>
+            <li>Fix
+                <a href="https://tracking.gitads.io/?repo=intellij-rainbow-brackets">File not found error when using releative path of custom voice package</a>
+            </li>
+        </ul>
+        <br>
+
+        <p>1.2.5</p>
+        <ul>
+            <li>Fix
+                <a href="https://tracking.gitads.io/?repo=intellij-rainbow-brackets">Some bugs</a>
+            </li>
+        </ul>
+        <br>
+
         <p>1.2.4</p>
         <ul>
             <li>Fix
