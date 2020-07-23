@@ -43,20 +43,10 @@ class RainbowFartUpdateNotifyActivity : StartupActivity {
     🌈Thank you for downloading <b><a href="https://github.com/izhangzhihao/intellij-rainbow-fart">Rainbow Fart</a></b>!<br>
     👍If you find this plugin helpful, <b><a href="https://github.com/izhangzhihao/intellij-rainbow-fart#%E6%94%AF%E6%8C%81%E6%88%91">please support us!</a>.</b><br>
     🐛If you run into any problem, <b><a href="https://github.com/izhangzhihao/intellij-rainbow-fart/issues">feel free to raise a issue</a>.</b><br>
-    🆕See <b><a href="${changelog()}">changelog</a></b> for more details about this update.<br>
+    🆕See <b><a href="https://github.com/izhangzhihao/intellij-rainbow-fart/releases">changelog</a></b> for more details about this update.<br>
     👉Other additional features under
     <b>Settings > Other Settings > Rainbow Fart</b><br/>
     """
-        }
-
-        private fun changelog(): String {
-            val plugin = getPlugin()
-            return if (plugin == null) {
-                """https://github.com/izhangzhihao/intellij-rainbow-fart/releases"""
-            } else {
-                """https://github.com/izhangzhihao/intellij-rainbow-fart/releases/tag/${plugin.version}"""
-            }
-
         }
 
         fun getPlugin(): IdeaPluginDescriptor? = PluginManager.getPlugin(
