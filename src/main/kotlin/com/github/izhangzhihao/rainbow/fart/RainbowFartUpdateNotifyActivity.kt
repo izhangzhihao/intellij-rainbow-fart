@@ -27,7 +27,7 @@ class RainbowFartUpdateNotifyActivity : StartupActivity {
         if (isInstalled) {
             val pluginDescriptor = PluginManagerCore.getPlugin(pluginId)
             if (pluginDescriptor != null) {
-                StartupActionScriptManager.addActionCommand(StartupActionScriptManager.DeleteCommand(pluginDescriptor.path))
+                StartupActionScriptManager.addActionCommand(StartupActionScriptManager.DeleteCommand(pluginDescriptor.pluginPath.toFile()))
             }
         }
     }
