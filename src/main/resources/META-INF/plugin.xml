@@ -12,6 +12,14 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>1.3</p>
+        <ul>
+            <li>Fix
+                <a href="https://tracking.gitads.io/?repo=intellij-rainbow-brackets">Better exception handling & better support for comments</a>
+            </li>
+        </ul>
+        <br>
+
         <p>1.2.6</p>
         <ul>
             <li>Fix
