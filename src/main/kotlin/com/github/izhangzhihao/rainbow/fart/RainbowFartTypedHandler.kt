@@ -1,6 +1,6 @@
 package com.github.izhangzhihao.rainbow.fart
 
-import com.github.izhangzhihao.rainbow.fart.RainbowFartTypedHandler.FartTypedHandler.isTypingInsideComment
+import com.github.izhangzhihao.rainbow.fart.RainbowFartTypedHandler.FartTypedHandler.handle
 import com.github.izhangzhihao.rainbow.fart.RainbowFartTypedHandler.FartTypedHandler.releaseFart
 import com.github.izhangzhihao.rainbow.fart.settings.RainbowFartSettings
 import com.intellij.codeInsight.template.impl.editorActions.TypedActionHandlerBase
@@ -20,6 +20,10 @@ import kotlinx.coroutines.launch
 import java.io.File
 
 
+/***
+ *  Also should read https://github.com/JetBrains/kotlin/blob/master/idea/src/org/jetbrains/kotlin/idea/editor/KotlinTypedHandler.java
+ *  and [com.intellij.codeInsight.editorActions.JavaTypedHandler]
+ */
 class RainbowFartTypedHandler(originalHandler: TypedActionHandler) : TypedActionHandlerBase(originalHandler) {
 
     private var candidates: MutableList<Char> = mutableListOf()
@@ -36,12 +40,11 @@ class RainbowFartTypedHandler(originalHandler: TypedActionHandler) : TypedAction
                 val virtualFile = FileDocumentManager.getInstance().getFile(editor.document)
                 if (virtualFile != null) {
                     val file = PsiManager.getInstance(project).findFile(virtualFile)
-                    if (file != null && isTypingInsideComment(editor, file)) {
+                    if (file != null && handle(editor, file)) {
                         return
                     }
                 }
             }
-
             candidates.add(charTyped)
             val str = candidates.joinToString("")
             BuildInContributes.buildInContributesSeq
@@ -86,7 +89,7 @@ class RainbowFartTypedHandler(originalHandler: TypedActionHandler) : TypedAction
             player.close()
         }
 
-        fun isTypingInsideComment(editor: Editor, file: PsiFile): Boolean {
+        fun handle(editor: Editor, file: PsiFile): Boolean {
             val provider = file.viewProvider
             val offset = editor.caretModel.offset
             val elementAtCaret: PsiElement?
@@ -95,17 +98,54 @@ class RainbowFartTypedHandler(originalHandler: TypedActionHandler) : TypedAction
             } else {
                 provider.findElementAt(editor.document.textLength - 1)
             }
+            if (
+                    elementAtCaret?.language?.id.equals("kotlin", ignoreCase = true) ||
+                    elementAtCaret?.language?.id.equals("java", ignoreCase = true) ||
+                    elementAtCaret?.language?.id.equals("javascript", ignoreCase = true) ||
+                    elementAtCaret?.language?.id == "ECMAScript 6" ||
+                    elementAtCaret?.language?.id.equals("typescript", ignoreCase = true)
+            ) {
+                triggerForSpecificLang(elementAtCaret)
+                return true
+            }
+
             var element = elementAtCaret
             while (element is PsiWhiteSpace) {
                 element = element.getPrevSibling()
             }
-
             return element.elementType.toString().contains("comment", true)
-//            if (element == null) {
-//                return false
-//            }
-//            val node: ASTNode? = element.node
-//            return node != null //&& JavaDocTokenType.ALL_JAVADOC_TOKENS.contains(node.getElementType())
+        }
+
+        private fun triggerForSpecificLang(elementAtCaret: PsiElement?) {
+            val str =
+                    when {
+                        elementAtCaret !is PsiWhiteSpace -> {
+                            elementAtCaret.toString()
+                        }
+                        elementAtCaret.language.id.equals("java", ignoreCase = true) -> { // && element.prevSibling !is PsiWhiteSpace
+                            elementAtCaret.prevSibling.toString()
+                        }
+                        elementAtCaret.language.id == "ECMAScript 6" ||
+                                elementAtCaret.language.id.equals("javascript", ignoreCase = true) ||
+                                elementAtCaret.language.id.equals("typescript", ignoreCase = true)
+                        -> { // && element.parent?.firstChild !is PsiWhiteSpace
+                            elementAtCaret.parent?.firstChild.toString()
+                        }
+                        elementAtCaret.language.id.equals("kotlin", ignoreCase = true) -> {
+                            elementAtCaret.parent?.firstChild.toString()
+                        }
+                        else -> {
+                            elementAtCaret.prevSibling.toString()
+                        }
+                    }
+            BuildInContributes.buildInContributesSeq
+                    .firstOrNull { (keyword, _) ->
+                        str.contains(keyword, true)
+                    }?.let { (_, voices) ->
+                        GlobalScope.launch(Dispatchers.Default) {
+                            releaseFart(voices)
+                        }
+                    }
         }
     }
 }
