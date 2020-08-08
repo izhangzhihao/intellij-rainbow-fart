@@ -21,23 +21,26 @@ class RainbowFartTypedHandler(originalHandler: TypedActionHandler) : TypedAction
             this.myOriginalHandler?.execute(editor, charTyped, dataContext)
             return
         }
-        candidates.add(charTyped)
 
-        val str = candidates.joinToString("")
-
-        BuildInContributes.buildInContributesSeq
-                .firstOrNull { (keyword, _) ->
-                    str.contains(keyword, true)
-                }?.let { (_, voices) ->
-                    GlobalScope.launch(Dispatchers.Default) {
-                        releaseFart(voices)
+        try {
+            candidates.add(charTyped)
+            val str = candidates.joinToString("")
+            BuildInContributes.buildInContributesSeq
+                    .firstOrNull { (keyword, _) ->
+                        str.contains(keyword, true)
+                    }?.let { (_, voices) ->
+                        GlobalScope.launch(Dispatchers.Default) {
+                            releaseFart(voices)
+                        }
+                        candidates.clear()
                     }
-                    candidates.clear()
-                }
-        if (candidates.size > 20) {
-            candidates = candidates.subList(10, candidates.size - 1)
+            if (candidates.size > 20) {
+                candidates = candidates.subList(10, candidates.size - 1)
+            }
+        } finally {
+            // Ensure original handler is called no matter what errors are thrown, to prevent typing from being lost.
+            this.myOriginalHandler?.execute(editor, charTyped, dataContext)
         }
-        this.myOriginalHandler?.execute(editor, charTyped, dataContext)
     }
 
     object FartTypedHandler {
