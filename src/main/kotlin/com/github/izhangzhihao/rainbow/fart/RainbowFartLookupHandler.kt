@@ -9,14 +9,17 @@ import java.beans.PropertyChangeListener
 
 class RainbowFartLookupHandler : LookupListener {
     override fun itemSelected(event: LookupEvent) {
-        val currentItem: LookupElement = event.lookup.currentItem ?: return
-        val lookupString: String = currentItem.lookupString
-        if (BuildInContributes.buildInContributes.containsKey(lookupString)) {
-            GlobalScope.launch((Dispatchers.Default)) {
-                releaseFart(BuildInContributes.buildInContributes.getOrDefault(lookupString, emptyList()))
+        try {
+            val currentItem: LookupElement = event.lookup.currentItem ?: return
+            val lookupString: String = currentItem.lookupString
+            if (BuildInContributes.buildInContributes.containsKey(lookupString)) {
+                GlobalScope.launch((Dispatchers.Default)) {
+                    releaseFart(BuildInContributes.buildInContributes.getOrDefault(lookupString, emptyList()))
+                }
             }
+        } finally {
+            super.itemSelected(event)
         }
-        super.itemSelected(event)
     }
 }
 
