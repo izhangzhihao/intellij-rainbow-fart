@@ -1,6 +1,7 @@
 package com.github.izhangzhihao.rainbow.fart
 
 import com.github.izhangzhihao.rainbow.fart.RainbowFartTypedHandler.FartTypedHandler.releaseFart
+import com.github.izhangzhihao.rainbow.fart.settings.RainbowFartSettings
 import com.intellij.codeInsight.lookup.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -10,6 +11,9 @@ import java.beans.PropertyChangeListener
 class RainbowFartLookupHandler : LookupListener {
     override fun itemSelected(event: LookupEvent) {
         try {
+            if (!RainbowFartSettings.instance.isRainbowFartEnabled) {
+                return
+            }
             val currentItem: LookupElement = event.lookup.currentItem ?: return
             val lookupString: String = currentItem.lookupString
             if (BuildInContributes.buildInContributes.containsKey(lookupString)) {
