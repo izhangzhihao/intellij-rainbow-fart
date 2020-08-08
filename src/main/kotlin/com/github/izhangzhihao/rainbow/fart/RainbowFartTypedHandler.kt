@@ -12,7 +12,7 @@ import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiFile
 import com.intellij.psi.PsiManager
 import com.intellij.psi.PsiWhiteSpace
-import com.intellij.psi.util.elementType
+import com.github.izhangzhihao.util.elementType
 import javazoom.jl.player.Player
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
