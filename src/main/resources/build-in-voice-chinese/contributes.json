@@ -45,7 +45,7 @@
             ]
         },
         {
-            "keywords": ["import", "include"],
+            "keywords": ["import ", "include "],
             "voices": [
                 "import_01.mp3",
                 "import_02.mp3"
