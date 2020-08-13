@@ -18,11 +18,9 @@
 
 Languages: 简体中文 | [English](./README.md)
 
-[![https://tracking.gitads.io/?repo=intellij-rainbow-brackets](https://images.gitads.io/intellij-rainbow-brackets)](https://tracking.gitads.io/?repo=intellij-rainbow-brackets)
-
 ## 下载
 
-[https://plugins.jetbrains.com/plugin/14543-rainbow-fart](https://tracking.gitads.io/?repo=intellij-rainbow-brackets)
+https://plugins.jetbrains.com/plugin/14543-rainbow-fart
 
 ## 概述
 
