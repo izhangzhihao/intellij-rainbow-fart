@@ -15,7 +15,7 @@
         <p>1.3</p>
         <ul>
             <li>Fix
-                <a href="https://tracking.gitads.io/?repo=intellij-rainbow-brackets">Better exception handling & better support for comments</a>
+                Better exception handling & better support for comments
             </li>
         </ul>
         <br>
@@ -23,7 +23,7 @@
         <p>1.2.6</p>
         <ul>
             <li>Fix
-                <a href="https://tracking.gitads.io/?repo=intellij-rainbow-brackets">File not found error when using releative path of custom voice package</a>
+                File not found error when using releative path of custom voice package
             </li>
         </ul>
         <br>
@@ -31,7 +31,7 @@
         <p>1.2.5</p>
         <ul>
             <li>Fix
-                <a href="https://tracking.gitads.io/?repo=intellij-rainbow-brackets">Some bugs</a>
+                Some bugs
             </li>
         </ul>
         <br>
