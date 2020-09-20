@@ -36,8 +36,8 @@ https://plugins.jetbrains.com/plugin/14543-rainbow-fart
 
 ```
 cd /some/dir  # like ~/Downloads
-curl -LO https://github.com/zthxxx/kugimiya-rainbow-fart/releases/download/v1.0.0/kugimiya-voice-1.0.0.zip
-unzip -q kugimiya-voice-1.0.0.zip -d kugimiya-rainbow-fart
+curl -LO https://github.com/zthxxx/kugimiya-rainbow-fart/releases/download/v1.0.2/kugimiya-voice-1.0.2.zip
+unzip -q kugimiya-voice-1.0.2.zip -d kugimiya-rainbow-fart
 ```
 
 然后将 `/some/dir/kugimiya-rainbow-fart` 写入配置中去，点击保存退出，然后重启IDE。
