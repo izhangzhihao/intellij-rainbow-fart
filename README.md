@@ -40,8 +40,8 @@ like this:
 
 ```
 cd /some/dir  # like ~/Downloads
-curl -LO https://github.com/zthxxx/kugimiya-rainbow-fart/releases/download/v1.0.0/kugimiya-voice-1.0.0.zip
-unzip -q kugimiya-voice-1.0.0.zip -d kugimiya-rainbow-fart
+curl -LO https://github.com/zthxxx/kugimiya-rainbow-fart/releases/download/v1.0.2/kugimiya-voice-1.0.2.zip
+unzip -q kugimiya-voice-1.0.2.zip -d kugimiya-rainbow-fart
 ```
 
 After that you can just put `/some/dir/kugimiya-rainbow-fart` into that option. don't forget to save and restart your IDE.
