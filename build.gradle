@@ -59,6 +59,7 @@ dependencies {
     }
     implementation('io.timeandspace:cron-scheduler:0.1')
     implementation('javazoom:jlayer:1.0.1')
+    implementation "com.fasterxml.jackson.module:jackson-module-kotlin:2.11.+"
 }
 
 sourceCompatibility = javaVersion
