@@ -16,7 +16,7 @@ plugins {
     id "org.jetbrains.intellij" version "0.4.20"
     id "com.adarshr.test-logger" version "2.0.0"
     id "de.undercouch.download" version "4.0.2"
-    id "org.jetbrains.kotlin.jvm" version "1.3.71"
+    id "org.jetbrains.kotlin.jvm" version "1.4.10"
     id "idea"
 }
 
@@ -59,10 +59,6 @@ dependencies {
     }
     implementation('io.timeandspace:cron-scheduler:0.1')
     implementation('javazoom:jlayer:1.0.1')
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.10.+") {
-        exclude module: "kotlin-stdlib"
-        exclude module: "kotlin-reflect"
-    }
 }
 
 sourceCompatibility = javaVersion

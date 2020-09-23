@@ -38,7 +38,7 @@ class ResourcesLoader : StartupActivity {
 
         val mapper = jacksonObjectMapper()
 
-        mapper.registerModule(KotlinModule(nullisSameAsDefault = true))
+        mapper.registerModule(KotlinModule(nullIsSameAsDefault = true))
 
         val manifest: Manifest = mapper.readValue(current)
 

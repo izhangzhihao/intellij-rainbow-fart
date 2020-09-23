@@ -163,13 +163,13 @@ private val something: String by lazy { String(Base64.getDecoder().decode(st)) }
 class GitHubErrorReporter : ErrorReportSubmitter() {
     override fun getReportActionText() = ErrorReportBundle.message("report.error.to.plugin.vendor")
     override fun submit(
-            events: Array<IdeaLoggingEvent>, info: String?, parent: Component, consumer: Consumer<SubmittedReportInfo>) =
+            events: Array<IdeaLoggingEvent>, info: String?, parent: Component, consumer: Consumer<in SubmittedReportInfo>) =
             doSubmit(events[0], parent, consumer, fromThrowable(events[0].throwable), info)
 
     private fun doSubmit(
             event: IdeaLoggingEvent,
             parent: Component,
-            callback: Consumer<SubmittedReportInfo>,
+            callback: Consumer<in SubmittedReportInfo>,
             errorContext: ErrorContext,
             description: String?): Boolean {
         val dataContext = DataManager.getInstance().getDataContext(parent)
@@ -200,7 +200,7 @@ class GitHubErrorReporter : ErrorReportSubmitter() {
     }
 
     internal class CallbackWithNotification(
-            private val consumer: Consumer<SubmittedReportInfo>,
+            private val consumer: Consumer<in SubmittedReportInfo>,
             private val project: Project?) : Consumer<SubmittedReportInfo> {
         override fun consume(reportInfo: SubmittedReportInfo) {
             consumer.consume(reportInfo)
