@@ -12,6 +12,14 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>1.3.4</p>
+        <ul>
+            <li>Fix some runtime errors</li>
+            <li>Bump to 2020.3 & Kotlin 1.4</li>
+            <li>Deprecated API usage removed</li>
+        </ul>
+        <br>
+
         <p>1.3.2</p>
         <ul>
             <li>Compatible with 2020.3</li>
