@@ -4,6 +4,7 @@ import com.github.izhangzhihao.rainbow.fart.settings.RainbowFartSettings
 import com.intellij.ide.plugins.IdeaPluginDescriptor
 import com.intellij.ide.plugins.PluginManagerCore
 import com.intellij.ide.startup.StartupActionScriptManager
+import com.intellij.ide.startup.StartupActionScriptManager.DeleteCommand
 import com.intellij.notification.NotificationListener
 import com.intellij.notification.NotificationType
 import com.intellij.openapi.extensions.PluginId
@@ -27,7 +28,7 @@ class RainbowFartUpdateNotifyActivity : StartupActivity {
         if (isInstalled) {
             val pluginDescriptor = PluginManagerCore.getPlugin(pluginId)
             if (pluginDescriptor != null) {
-                StartupActionScriptManager.addActionCommand(StartupActionScriptManager.DeleteCommand(pluginDescriptor.pluginPath.toFile()))
+                StartupActionScriptManager.addActionCommand(DeleteCommand(pluginDescriptor.pluginPath))
             }
         }
     }
@@ -74,7 +75,6 @@ class RainbowFartUpdateNotifyActivity : StartupActivity {
             val notification = createNotification(
                     updateMsg(),
                     updateContent,
-                    pluginId,
                     NotificationType.INFORMATION,
                     NotificationListener.UrlOpeningListener(false)
             )

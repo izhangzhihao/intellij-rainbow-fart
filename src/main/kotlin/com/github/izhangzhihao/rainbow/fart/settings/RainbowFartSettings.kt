@@ -1,6 +1,6 @@
 package com.github.izhangzhihao.rainbow.fart.settings
 
-import com.intellij.openapi.components.ServiceManager.getService
+import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.components.PersistentStateComponent
 import com.intellij.openapi.components.State
 import com.intellij.openapi.components.Storage
@@ -23,7 +23,7 @@ class RainbowFartSettings : PersistentStateComponent<RainbowFartSettings> {
 
     companion object {
         val instance: RainbowFartSettings
-            get() = getService(RainbowFartSettings::class.java)
+            get() = ApplicationManager.getApplication().getService(RainbowFartSettings::class.java)
 
         var isAppliedApplicationLevel = false
     }

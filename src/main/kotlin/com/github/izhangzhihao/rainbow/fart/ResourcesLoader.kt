@@ -1,6 +1,7 @@
 package com.github.izhangzhihao.rainbow.fart
 
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.module.kotlin.KotlinModule
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
@@ -38,7 +39,9 @@ class ResourcesLoader : StartupActivity {
 
         val mapper = jacksonObjectMapper()
 
-        mapper.registerModule(KotlinModule(nullisSameAsDefault = true))
+        mapper.registerModule(KotlinModule(nullIsSameAsDefault = true))
+
+        mapper.enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
 
         val manifest: Manifest = mapper.readValue(current)
 

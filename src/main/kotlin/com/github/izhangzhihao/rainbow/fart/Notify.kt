@@ -9,14 +9,10 @@ import com.intellij.ui.BalloonLayoutData
 import com.intellij.ui.awt.RelativePoint
 import java.awt.Point
 
-fun createNotification(title: String, content: String, displayId: String,
+fun createNotification(title: String, content: String,
                        type: NotificationType, listener: NotificationListener): Notification {
-    val group = NotificationGroup(
-            displayId,
-            NotificationDisplayType.STICKY_BALLOON,
-            true
-    )
-    return group.createNotification(title, content, type, listener)
+    return NotificationGroupManager.getInstance().getNotificationGroup("Rainbow Farts Notification Group")
+    .createNotification(title, content, type).setListener(listener)
 }
 
 fun showFullNotification(project: Project, notification: Notification) {
