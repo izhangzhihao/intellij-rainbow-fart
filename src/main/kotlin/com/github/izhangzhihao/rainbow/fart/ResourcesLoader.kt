@@ -39,7 +39,7 @@ class ResourcesLoader : StartupActivity {
 
         val mapper = jacksonObjectMapper()
 
-        mapper.registerModule(KotlinModule(nullIsSameAsDefault = true))
+        mapper.registerModule(KotlinModule(nullToEmptyCollection = true, nullToEmptyMap = true, nullIsSameAsDefault = true))
 
         mapper.enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
 

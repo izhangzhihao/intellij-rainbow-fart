@@ -78,22 +78,24 @@ class RainbowFartTypedHandler(originalHandler: TypedActionHandler) : TypedAction
         }
 
         private fun playVoice(voices: List<String>) {
-            val mp3Stream =
-                if (RainbowFartSettings.instance.customVoicePackage != "") {
-                    resolvePath(RainbowFartSettings.instance.customVoicePackage + File.separator + voices.random()).inputStream()
-                } else {
-                    FartTypedHandler::class.java.getResourceAsStream("/build-in-voice-chinese/" + voices.random())
-                }
-            val player = Player(mp3Stream)
-            player.play()
-            player.close()
+            try {
+                val mp3Stream =
+                    if (RainbowFartSettings.instance.customVoicePackage != "") {
+                        resolvePath(RainbowFartSettings.instance.customVoicePackage + File.separator + voices.random()).inputStream()
+                    } else {
+                        FartTypedHandler::class.java.getResourceAsStream("/build-in-voice-chinese/" + voices.random())
+                    }
+                val player = Player(mp3Stream)
+                player.play()
+                player.close()
+            } catch (e: Throwable) {
+            }
         }
 
         fun isTypingInsideComment(editor: Editor, file: PsiFile): Boolean {
             val provider = file.viewProvider
             val offset = editor.caretModel.offset
-            val elementAtCaret: PsiElement?
-            elementAtCaret = if (offset < editor.document.textLength) {
+            val elementAtCaret: PsiElement? = if (offset < editor.document.textLength) {
                 provider.findElementAt(offset)
             } else {
                 provider.findElementAt(editor.document.textLength - 1)

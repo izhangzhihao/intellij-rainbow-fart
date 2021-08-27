@@ -54,15 +54,8 @@ idea {
 }
 
 dependencies {
-    implementation("org.eclipse.mylyn.github:org.eclipse.egit.github.core:5.5.0.201909110433-r") {
-        exclude module: "gson"
-    }
     implementation('io.timeandspace:cron-scheduler:0.1')
     implementation('javazoom:jlayer:1.0.1')
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.+") {
-        exclude module: "kotlin-stdlib"
-        exclude module: "kotlin-reflect"
-    }
 }
 
 sourceCompatibility = javaVersion
