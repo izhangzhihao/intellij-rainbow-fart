@@ -2,8 +2,8 @@ package com.github.izhangzhihao.rainbow.fart
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.databind.DeserializationFeature
+import com.fasterxml.jackson.databind.json.JsonMapper
 import com.fasterxml.jackson.module.kotlin.KotlinModule
-import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import com.github.izhangzhihao.rainbow.fart.BuildInContributes.buildInContributes
 import com.github.izhangzhihao.rainbow.fart.BuildInContributes.cron
@@ -31,30 +31,32 @@ class ResourcesLoader : StartupActivity {
         }
         val customVoicePackage = RainbowFartSettings.instance.customVoicePackage
         val current =
-                if (customVoicePackage != "") {
-                    resolvePath(customVoicePackage + File.separator + "manifest.json").readText()
-                } else {
-                    ResourcesLoader::class.java.getResource("/build-in-voice-chinese/manifest.json").readText()
-                }
+            if (customVoicePackage != "") {
+                resolvePath(customVoicePackage + File.separator + "manifest.json").readText()
+            } else {
+                ResourcesLoader::class.java.getResource("/build-in-voice-chinese/manifest.json").readText()
+            }
 
-        val mapper = jacksonObjectMapper()
-
-        mapper.registerModule(KotlinModule(nullToEmptyCollection = true, nullToEmptyMap = true, nullIsSameAsDefault = true))
+        /***
+         * https://github.com/FasterXML/jackson-module-kotlin#usage
+         */
+        val mapper = JsonMapper.builder().addModule(KotlinModule(nullIsSameAsDefault = true)).build()
 
         mapper.enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
 
         val manifest: Manifest = mapper.readValue(current)
 
         val contributes: List<Contribute> =
-                if (manifest.contributes != null) {
-                    manifest.contributes
-                } else if (customVoicePackage != "") {
-                    val contText = resolvePath(customVoicePackage + File.separator + "contributes.json").readText()
-                    mapper.readValue<Contributes>(contText).contributes
-                } else {
-                    val contText = ResourcesLoader::class.java.getResource("/build-in-voice-chinese/contributes.json").readText()
-                    mapper.readValue<Contributes>(contText).contributes
-                }
+            if (manifest.contributes != null) {
+                manifest.contributes
+            } else if (customVoicePackage != "") {
+                val contText = resolvePath(customVoicePackage + File.separator + "contributes.json").readText()
+                mapper.readValue<Contributes>(contText).contributes
+            } else {
+                val contText =
+                    ResourcesLoader::class.java.getResource("/build-in-voice-chinese/contributes.json").readText()
+                mapper.readValue<Contributes>(contText).contributes
+            }
 
         contributes.forEach {
             it.keywords.forEach { keyword ->
@@ -128,10 +130,19 @@ class ResourcesLoader : StartupActivity {
     }
 }
 
-data class Manifest(val name: String = "", @JsonProperty("display-name") val displayName: String = "",
-                    val avatar: String = "", @JsonProperty("avatar-dark") val avatarDark: String = "",
-                    val version: String = "1.0.0", val description: String = "", val languages: List<String> = emptyList(),
-                    val author: String = "No one", val gender: String = "female", val locale: String = "zh", val contributes: List<Contribute>?)
+data class Manifest(
+    val name: String = "",
+    @JsonProperty("display-name") val displayName: String = "",
+    val avatar: String = "",
+    @JsonProperty("avatar-dark") val avatarDark: String = "",
+    val version: String = "1.0.0",
+    val description: String = "",
+    val languages: List<String> = emptyList(),
+    val author: String = "No one",
+    val gender: String = "female",
+    val locale: String = "zh",
+    val contributes: List<Contribute>?
+)
 
 data class Contribute(val keywords: List<String>, val voices: List<String>)
 

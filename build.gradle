@@ -56,6 +56,13 @@ idea {
 dependencies {
     implementation('io.timeandspace:cron-scheduler:0.1')
     implementation('javazoom:jlayer:1.0.1')
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.11.+") {
+        exclude module: "kotlin-stdlib"
+        exclude module: "kotlin-stdlib-common"
+        exclude module: "kotlin-stdlib-jdk7"
+        exclude module: "kotlin-stdlib-jdk8"
+        exclude module: "kotlin-reflect"
+    }
 }
 
 sourceCompatibility = javaVersion
