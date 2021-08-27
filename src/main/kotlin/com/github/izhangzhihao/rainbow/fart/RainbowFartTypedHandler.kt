@@ -45,20 +45,23 @@ class RainbowFartTypedHandler(originalHandler: TypedActionHandler) : TypedAction
             candidates.add(charTyped)
             val str = candidates.joinToString("")
             BuildInContributes.buildInContributesSeq
-                    .firstOrNull { (keyword, _) ->
-                        str.contains(keyword, true)
-                    }?.let { (_, voices) ->
-                        GlobalScope.launch(Dispatchers.Default) {
-                            releaseFart(voices)
-                        }
-                        candidates.clear()
+                .firstOrNull { (keyword, _) ->
+                    str.contains(keyword, true)
+                }?.let { (_, voices) ->
+                    GlobalScope.launch(Dispatchers.Default) {
+                        releaseFart(voices)
                     }
+                    candidates.clear()
+                }
             if (candidates.size > 20) {
                 candidates = candidates.subList(10, candidates.size - 1)
             }
         } finally {
             // Ensure original handler is called no matter what errors are thrown, to prevent typing from being lost.
-            this.myOriginalHandler?.execute(editor, charTyped, dataContext)
+            try {
+                this.myOriginalHandler?.execute(editor, charTyped, dataContext)
+            } catch (e: Throwable) {
+            }
         }
     }
 
@@ -76,11 +79,11 @@ class RainbowFartTypedHandler(originalHandler: TypedActionHandler) : TypedAction
 
         private fun playVoice(voices: List<String>) {
             val mp3Stream =
-                    if (RainbowFartSettings.instance.customVoicePackage != "") {
-                        resolvePath(RainbowFartSettings.instance.customVoicePackage + File.separator + voices.random()).inputStream()
-                    } else {
-                        FartTypedHandler::class.java.getResourceAsStream("/build-in-voice-chinese/" + voices.random())
-                    }
+                if (RainbowFartSettings.instance.customVoicePackage != "") {
+                    resolvePath(RainbowFartSettings.instance.customVoicePackage + File.separator + voices.random()).inputStream()
+                } else {
+                    FartTypedHandler::class.java.getResourceAsStream("/build-in-voice-chinese/" + voices.random())
+                }
             val player = Player(mp3Stream)
             player.play()
             player.close()
