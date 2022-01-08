@@ -12,6 +12,12 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>1.3.6</p>
+        <ul>
+            <li>Fix missing error report error</li>
+        </ul>
+        <br>
+
         <p>1.3.5</p>
         <ul>
             <li>Fix runtime errors</li>
@@ -147,7 +153,6 @@
                             id="fart"/>
         <postStartupActivity implementation="com.github.izhangzhihao.rainbow.fart.ResourcesLoader"/>
         <postStartupActivity implementation="com.github.izhangzhihao.rainbow.fart.RainbowFartUpdateNotifyActivity"/>
-        <errorHandler implementation="com.github.izhangzhihao.rainbow.fart.GitHubErrorReporter"/>
         <applicationService serviceImplementation="com.github.izhangzhihao.rainbow.fart.settings.RainbowFartSettings"/>
         <applicationConfigurable instance="com.github.izhangzhihao.rainbow.fart.settings.RainbowFartConfigurable"/>
         <notificationGroup id="Rainbow Farts Notification Group" displayType="STICKY_BALLOON"/>
