@@ -3,6 +3,7 @@ package com.github.izhangzhihao.rainbow.fart
 import com.github.izhangzhihao.rainbow.fart.RainbowFartTypedHandler.FartTypedHandler.releaseFart
 import com.github.izhangzhihao.rainbow.fart.settings.RainbowFartSettings
 import com.intellij.codeInsight.lookup.*
+import com.intellij.openapi.project.Project
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -27,7 +28,9 @@ class RainbowFartLookupHandler : LookupListener {
     }
 }
 
-class RainbowFartLookupComponent(lookupManager: LookupManager) {
+class RainbowFartLookupComponent(project: Project) {
+
+    private val lookupManager: LookupManager = LookupManager.getInstance(project)
 
     private val lookupListener = PropertyChangeListener { evt ->
         if (evt.newValue is Lookup) {
