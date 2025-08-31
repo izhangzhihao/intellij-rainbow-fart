@@ -9,7 +9,6 @@
 </h1>
 
 <p align="center"> 
-<a href="https://circleci.com/gh/izhangzhihao/intellij-rainbow-fart"><img src="https://img.shields.io/circleci/project/github/izhangzhihao/intellij-rainbow-fart/master.svg?style=flat-square"></a>
 <a href="https://github.com/izhangzhihao/intellij-rainbow-fart/releases"><img src="https://img.shields.io/github/release/izhangzhihao/intellij-rainbow-fart.svg?style=flat-square"></a>
 <a href="https://plugins.jetbrains.com/plugin/14543-rainbow-fart"><img src="https://img.shields.io/jetbrains/plugin/d/14543-rainbow-fart.svg?style=flat-square"></a>
 <a href="https://plugins.jetbrains.com/plugin/14543-rainbow-fart"><img src="https://img.shields.io/jetbrains/plugin/v/14543-rainbow-fart.svg?style=flat-square"></a>
@@ -43,21 +42,6 @@ unzip -q kugimiya-voice-1.0.2.zip -d kugimiya-rainbow-fart
 然后将 `/some/dir/kugimiya-rainbow-fart` 写入配置中去，点击保存退出，然后重启IDE。
 
 请在[这里](https://github.com/topics/rainbow-fart)查找更多语音包。
-
-## 支持我
-
-
-<table>
-  <tr>
-    <th width="50%">AliPay</th>
-    <th width="50%">WeChatPay</th>
-  </tr>
-  <tr></tr>
-  <tr align="center">
-    <td><img width="70%" src="https://user-images.githubusercontent.com/12044174/85197261-77dd5a80-b312-11ea-9630-51caf7d634f2.jpg"></td>
-    <td><img width="70%" src="https://user-images.githubusercontent.com/12044174/85197263-7b70e180-b312-11ea-917a-35eab2ea08ae.jpg"></td>
-  </tr>
-</table>
 
 ## 许可
 

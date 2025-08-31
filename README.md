@@ -9,7 +9,6 @@
 </h1>
 
 <p align="center"> 
-<a href="https://circleci.com/gh/izhangzhihao/intellij-rainbow-fart"><img src="https://img.shields.io/circleci/project/github/izhangzhihao/intellij-rainbow-fart/master.svg?style=flat-square"></a>
 <a href="https://github.com/izhangzhihao/intellij-rainbow-fart/releases"><img src="https://img.shields.io/github/release/izhangzhihao/intellij-rainbow-fart.svg?style=flat-square"></a>
 <a href="https://plugins.jetbrains.com/plugin/14543-rainbow-fart"><img src="https://img.shields.io/jetbrains/plugin/d/14543-rainbow-fart.svg?style=flat-square"></a>
 <a href="https://plugins.jetbrains.com/plugin/14543-rainbow-fart"><img src="https://img.shields.io/jetbrains/plugin/v/14543-rainbow-fart.svg?style=flat-square"></a>
@@ -47,21 +46,6 @@ unzip -q kugimiya-voice-1.0.2.zip -d kugimiya-rainbow-fart
 After that you can just put `/some/dir/kugimiya-rainbow-fart` into that option. don't forget to save and restart your IDE.
 
 If you want more, please goes to [here](https://github.com/topics/rainbow-fart).
-
-## Support Me
-
-
-<table>
-  <tr>
-    <th width="50%">AliPay</th>
-    <th width="50%">WeChatPay</th>
-  </tr>
-  <tr></tr>
-  <tr align="center">
-    <td><img width="70%" src="https://user-images.githubusercontent.com/12044174/85197261-77dd5a80-b312-11ea-9630-51caf7d634f2.jpg"></td>
-    <td><img width="70%" src="https://user-images.githubusercontent.com/12044174/85197263-7b70e180-b312-11ea-917a-35eab2ea08ae.jpg"></td>
-  </tr>
-</table>
 
 ## License
 
